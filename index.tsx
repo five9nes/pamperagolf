@@ -34,7 +34,7 @@ export const ComingSoon = (): JSX.Element => {
   ];
 
   return (
-    <main className="min-h-screen w-full bg-[url(/background1.png)] bg-cover bg-center flex flex-col items-center justify-center">
+    <main className="min-h-screen w-full bg-[url(/background1.png)] bg-cover bg-center flex flex-col items-center justify-end pb-20">
       <div className="flex gap-8 md:gap-16">
         {units.map((unit, i) => (
           <div key={unit.label} className="flex items-center gap-8 md:gap-16">
@@ -54,9 +54,6 @@ export const ComingSoon = (): JSX.Element => {
           </div>
         ))}
       </div>
-      <footer className="absolute bottom-4 text-white text-xs opacity-60">
-        Created by Five9nes.io
-      </footer>
     </main>
   );
 };
