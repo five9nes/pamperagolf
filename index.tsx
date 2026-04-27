@@ -34,7 +34,7 @@ export const ComingSoon = (): JSX.Element => {
   ];
 
   return (
-    <main className="min-h-[100dvh] w-full bg-[url(/background1.png)] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-end pb-[20vh]">
+    <main className="min-h-[100dvh] w-full bg-[url(/mobile_background.png)] md:bg-[url(/background1.png)] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-end pb-[20vh]">
       <div className="flex items-start gap-3 sm:gap-8 md:gap-12 px-4">
         {units.map((unit, i) => (
           <div key={unit.label} className="flex items-start gap-3 sm:gap-8 md:gap-12">
