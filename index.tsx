@@ -1,13 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import bitmap from "./bitmap.png";
 import icon from "./button.png";
-import owl1 from "./owl-1.png";
-import owl2 from "./owl-2.png";
-import pampaLogo from "./pampa-logo.png";
 import social from "./social.png";
-import tree1 from "./tree-1.png";
-import tree2 from "./tree-2.png";
-import tree3 from "./tree-3.png";
 
 type TimeUnit = {
   label: string;
@@ -151,50 +144,9 @@ export const ComingSoon = (): JSX.Element => {
         />
         <img className="w-[171px]" alt="Social media links" src={social} />
       </aside>
-      <section
-        className="absolute w-[41.43%] h-[33.63%] top-[19.67%] left-[29.57%]"
-        aria-label="Hero heading"
-      >
-        <h1 className="absolute w-[99.48%] top-[calc(50.00%_-_132px)] left-0 [font-family:'Montserrat-Black',Helvetica] font-black text-white text-[130px] tracking-[0] leading-[normal]">
-          COMING
-        </h1>
-        <div className="absolute w-[65.34%] top-[calc(50.00%_-_14px)] left-[15.17%] [font-family:'Montserrat-Black',Helvetica] font-black text-white text-[120px] tracking-[0] leading-[normal]">
-          SOON
-        </div>
-      </section>
-      <div className="absolute w-[63.14%] h-[73.22%] top-0 left-[22.64%]">
-        <img
-          className="absolute w-[25.45%] h-full top-0 left-[74.55%]"
-          alt="Forest tree"
-          src={tree3}
-        />
-        <img
-          className="absolute w-[85.75%] h-full top-0 left-[14.25%]"
-          alt="Forest tree"
-          src={tree1}
-        />
-        <img
-          className="absolute w-[55.66%] h-full top-0 left-[44.34%]"
-          alt="Forest tree"
-          src={tree2}
-        />
-        <img
-          className="absolute w-[42.42%] h-[54.59%] top-[45.41%] left-[57.58%]"
-          alt="Owl perched on a branch"
-          src={owl2}
-        />
-        <img
-          className="absolute w-full h-[80.76%] top-[19.24%] left-0"
-          alt="Owl in the forest"
-          src={owl1}
-        />
-      </div>
       <section className="absolute w-[28.43%] h-[27.54%] top-[55.96%] left-[35.79%] text-center">
         <p className="absolute w-full top-[calc(50.00%_-_108px)] left-0 [text-shadow:0px_0px_10px_#00000099] [font-family:'Montserrat-Medium',Helvetica] font-medium text-white text-xl text-center tracking-[0] leading-[normal]">
           There will be something very awesome
-        </p>
-        <p className="absolute w-[72.86%] top-[calc(50.00%_+_84px)] left-[13.57%] [text-shadow:0px_0px_10px_#00000099] [font-family:'Montserrat-Medium',Helvetica] font-medium text-white text-xl text-center tracking-[0] leading-[normal]">
-          ... as awesome as these owls.
         </p>
       </section>
       <section
@@ -240,16 +192,6 @@ export const ComingSoon = (): JSX.Element => {
           ESP
         </button>
       </nav>
-      <img
-        className="absolute w-[51.21%] h-[97.59%] top-[2.41%] left-[48.79%]"
-        alt="Pampora logo"
-        src={pampaLogo}
-      />
-      <img
-        className="absolute w-[57.57%] h-[92.01%] top-[7.99%] left-[42.43%]"
-        alt=""
-        src={bitmap}
-      />
     </main>
   );
 };
