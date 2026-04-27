@@ -34,20 +34,20 @@ export const ComingSoon = (): JSX.Element => {
   ];
 
   return (
-    <main className="min-h-screen w-full bg-[url(/background1.png)] bg-cover bg-center flex flex-col items-center justify-end pb-[20vh]">
-      <div className="flex gap-8 md:gap-16">
+    <main className="min-h-[100dvh] w-full bg-[url(/background1.png)] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-end pb-[20vh]">
+      <div className="flex items-start gap-3 sm:gap-8 md:gap-12 px-4">
         {units.map((unit, i) => (
-          <div key={unit.label} className="flex items-center gap-8 md:gap-16">
+          <div key={unit.label} className="flex items-start gap-3 sm:gap-8 md:gap-12">
             <div className="flex flex-col items-center">
-              <span className="text-white text-6xl md:text-8xl font-extralight tabular-nums [font-family:'Montserrat',sans-serif]">
+              <span className="text-white text-4xl sm:text-6xl md:text-8xl font-extralight tabular-nums [font-family:'Montserrat',sans-serif]">
                 {String(unit.value).padStart(2, "0")}
               </span>
-              <span className="text-white text-sm font-light tracking-widest uppercase mt-1 [font-family:'Montserrat',sans-serif]">
+              <span className="text-white text-[10px] sm:text-xs font-light tracking-widest uppercase mt-1 [font-family:'Montserrat',sans-serif]">
                 {unit.label}
               </span>
             </div>
             {i < units.length - 1 && (
-              <span className="text-white text-5xl md:text-7xl font-extralight self-start mt-2 [font-family:'Montserrat',sans-serif]" aria-hidden="true">
+              <span className="text-white text-3xl sm:text-5xl md:text-7xl font-extralight mt-1 sm:mt-2 [font-family:'Montserrat',sans-serif]" aria-hidden="true">
                 :
               </span>
             )}
