@@ -1,12 +1,11 @@
-import Image, { getImageProps, type StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { Glyphs } from "@/components/glyphs";
 import { Mark } from "@/components/logo";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
 import { processSteps, site } from "@/lib/site";
-import heroDesktop from "@/public/images/lifestyle/hero-desktop.jpg";
-import heroMobile from "@/public/images/lifestyle/hero-mobile.jpg";
+import heroImage from "@/public/images/lifestyle/hero-handcrafted.jpg";
 import plaidDetail from "@/public/images/lifestyle/plaid-detail.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import crochetDetail from "@/public/images/lifestyle/crochet-detail.jpg";
@@ -28,14 +27,15 @@ function Frame({ src, alt, sizes, className = "" }: { src: StaticImageData; alt:
 }
 
 function HeroMedia() {
-  const alt = "Pampera headcovers in a stand bag beside the green at Marine Park";
-  const { props: desktop } = getImageProps({ src: heroDesktop, alt, sizes: "100vw" });
-  const { props: mobile } = getImageProps({ src: heroMobile, alt, sizes: "100vw" });
   return (
-    <picture>
-      <source media="(min-width: 768px)" srcSet={desktop.srcSet} sizes="100vw" />
-      <img {...mobile} alt={alt} fetchPriority="high" loading="eager" className="absolute inset-0 size-full object-cover" />
-    </picture>
+    <Image
+      src={heroImage}
+      alt="Hand crafted for a hands-on game: a pink tweed Pampera headcover lying on grass among fallen oak leaves"
+      fill
+      preload
+      sizes="100vw"
+      className="object-cover"
+    />
   );
 }
 
@@ -79,16 +79,16 @@ export default async function Home() {
       </section>
 
       <div className="mt-8 md:mt-12">
-        <div data-covered className="sticky top-0 h-svh overflow-hidden">
+        <div data-covered className="sticky top-0 aspect-[43/24] max-h-svh w-full overflow-hidden">
           <div className="relative h-full">
             <div data-expand data-tone="dark" className="relative h-full overflow-hidden bg-night">
               <HeroMedia />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/20" />
-              <div className="container-page absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 pb-6 text-paper">
+              <div className="absolute inset-0 hidden bg-gradient-to-t from-black/40 via-transparent via-30% md:block" />
+              <div className="container-page absolute inset-x-0 bottom-0 hidden items-end justify-between gap-6 pb-6 text-paper md:flex">
                 <p className="label">
-                  Marine Park
+                  Handwoven in Argentina
                   <br />
-                  Brooklyn, NY
+                  Finished by hand
                 </p>
                 <Link href="/shop" className="btn-light">
                   Shop {site.collection.title}

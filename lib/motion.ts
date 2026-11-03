@@ -124,7 +124,7 @@ export function choreograph(root: HTMLElement) {
       { clipPath: "inset(0% 2.5% 0% 2.5% round 18px)" },
       { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none", scrollTrigger: scroll },
     );
-    if (media) gsap.fromTo(media, { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: scroll });
+    if (media) gsap.fromTo(media, { scale: 1.06 }, { scale: 1, ease: "none", scrollTrigger: scroll });
   }
 
   for (const el of all("[data-covered]")) {
