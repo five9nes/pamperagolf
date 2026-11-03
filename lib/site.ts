@@ -3,7 +3,7 @@ export const site = {
   tagline: "The loom before the links",
   description:
     "Golf headcovers cut from handwoven Argentine cloth and finished by hand. Made in editions of five — when the cloth is gone, the run is over.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pamperagolf.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pamperagolf.com",
   // TODO: add contact email once confirmed.
   instagram: { handle: "pamperagolf", url: "https://www.instagram.com/pamperagolf" },
   collection: {
