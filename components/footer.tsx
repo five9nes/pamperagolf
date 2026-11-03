@@ -2,7 +2,7 @@ import Link from "next/link";
 import { commerce } from "@/lib/commerce";
 import { site } from "@/lib/site";
 import { InstagramGlyph } from "./instagram-strip";
-import { Mark, Wordmark } from "./logo";
+import { Mark } from "./logo";
 import { PREVIEW_NOTE } from "./preview-banner";
 
 const columns = [
@@ -57,7 +57,16 @@ export function Footer() {
       </div>
 
       <div className="container-page">
-        <Wordmark tone="bone" className="h-auto w-full opacity-95" />
+        {/* Vector trace of the brush wordmark, so it stays sharp at full width. */}
+        <img
+          src="/brand/wordmark-bone.svg"
+          alt={site.name}
+          width={1263}
+          height={337}
+          loading="lazy"
+          decoding="async"
+          className="h-auto w-full opacity-95"
+        />
       </div>
 
       <div className="container-page flex flex-col gap-3 py-6 text-[11px] text-dim md:flex-row md:items-center md:justify-between">
