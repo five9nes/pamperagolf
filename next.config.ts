@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
     qualities: [85],
     remotePatterns: [
       { protocol: "https", hostname: "cdn.shopify.com" },
-      // Instagram post images (lib/instagram.ts)
-      { protocol: "https", hostname: "**.cdninstagram.com" },
-      { protocol: "https", hostname: "**.fbcdn.net" },
     ],
   },
 };
