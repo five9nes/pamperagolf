@@ -45,8 +45,12 @@ export function choreograph(root: HTMLElement) {
       autoSplit: true,
       onSplit(self) {
         gsap.set(el, { visibility: "visible" });
+        // Display type is set tight (line-height < 1), so give each mask room for descenders
+        // and italic overhang without changing the line spacing.
+        gsap.set(self.masks, { paddingBlock: "0.06em 0.2em", marginBlock: "-0.06em -0.2em" });
         return gsap.from(self.lines, {
-          yPercent: 110,
+          yPercent: 135,
+          clearProps: "transform",
           duration: 1.25,
           ease: EASE,
           stagger: 0.09,
@@ -132,7 +136,8 @@ export function choreograph(root: HTMLElement) {
     // Only recede while actually pinned under the next panel (the edition band isn't on mobile).
     if (!next || getComputedStyle(el).position !== "sticky") continue;
     const scroll = { trigger: next, start: "top bottom", end: "top top", scrub: true };
-    gsap.to(el.firstElementChild, { scale: 0.92, yPercent: -6, ease: "none", scrollTrigger: scroll });
+    // force3D off keeps the panel out of a GPU layer, so its text re-renders sharp while scaled.
+    gsap.to(el.firstElementChild, { scale: 0.92, yPercent: -6, ease: "none", force3D: false, scrollTrigger: scroll });
     const dim = el.querySelector("[data-dim]");
     if (dim) gsap.fromTo(dim, { opacity: 0 }, { opacity: 0.65, ease: "none", scrollTrigger: scroll });
   }
