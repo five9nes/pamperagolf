@@ -67,14 +67,19 @@ export default async function Home() {
           >
             The loom before the <span className="accent">links.</span>
           </h1>
-          <p
+          <div
             data-reveal="up"
             data-delay="0.5"
-            className="label order-3 max-w-[17rem] text-muted md:col-span-3 md:justify-self-end md:pb-3"
+            className="order-3 max-w-[17rem] md:col-span-3 md:justify-self-end md:pb-3"
           >
-            Golf headcovers cut from cloth handwoven in Argentina. Each run is numbered. When the cloth is gone,
-            it&rsquo;s gone.
-          </p>
+            <p className="label text-muted">
+              Golf headcovers cut from cloth handwoven in Argentina. Each run is numbered. When the cloth is gone,
+              it&rsquo;s gone.
+            </p>
+            <Link href="/shop" className="btn mt-5">
+              Shop {site.collection.title}
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -90,10 +95,7 @@ export default async function Home() {
                   <br />
                   Finished by hand
                 </p>
-                <Link href="/shop" className="btn-light">
-                  Shop {site.collection.title}
-                </Link>
-                <p className="label hidden text-right sm:block">
+                <p className="label text-right">
                   {site.edition.driver + site.edition.fairway} per design
                   <br />
                   Made to order
