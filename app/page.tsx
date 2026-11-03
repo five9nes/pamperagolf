@@ -40,12 +40,12 @@ function HeroMedia() {
 }
 
 const course = [
-  { src: swing, alt: "A golfer swings behind a cart carrying Pampera covers", caption: "Brooklyn, NY", wide: false },
-  { src: editionWide, alt: "Slate, coral and mustard diamond covers on the grass beside a bag", caption: "The diamond cuts", wide: true },
-  { src: flagBag, alt: "Pampera covers in a stand bag near the flag", caption: "By the flag", wide: false },
-  { src: fairwayWide, alt: "Two bags on the fairway at Marine Park", caption: "Marine Park", wide: false },
-  { src: reeds, alt: "Pampas grass and scrub at the edge of the course", caption: "The long grass", wide: true },
-  { src: cartRow, alt: "Crochet and leather covers in a bag on the cart", caption: "Leather & Check", wide: false },
+  { src: swing, alt: "A golfer swings behind a cart carrying Pampera covers", wide: false },
+  { src: editionWide, alt: "Slate, coral and mustard diamond covers on the grass beside a bag", wide: true },
+  { src: flagBag, alt: "Pampera covers in a stand bag near the flag", wide: false },
+  { src: fairwayWide, alt: "Two bags on the fairway", wide: false },
+  { src: reeds, alt: "Pampas grass and scrub at the edge of the course", wide: true },
+  { src: cartRow, alt: "Crochet and leather covers in a bag on the cart", wide: false },
 ];
 
 export default async function Home() {
@@ -240,27 +240,21 @@ export default async function Home() {
           className="container-page flex h-full snap-x snap-mandatory items-center gap-3 overflow-x-auto [scrollbar-width:none] md:w-max md:gap-5 md:overflow-visible"
         >
           <div className="w-[70vw] shrink-0 snap-start pr-6 md:w-[30vw] md:pr-10">
-            <p className="label text-muted">Marine Park, Brooklyn</p>
-            <h2 id="course-title" data-reveal="lines" className="display mt-4 text-[3rem] md:text-[5.5rem]">
+            <h2 id="course-title" data-reveal="lines" className="display text-[3rem] md:text-[5.5rem]">
               On the <span className="accent">course.</span>
             </h2>
             <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-muted">
               The founding collection, out where it belongs.
             </p>
           </div>
-          {course.map(({ src, alt, caption, wide }, i) => (
-            <figure key={alt} className="shrink-0 snap-start">
-              <Frame
-                src={src}
-                alt={alt}
-                sizes={wide ? "(min-width: 768px) 60vw, 85vw" : "(min-width: 768px) 28vw, 62vw"}
-                className={`h-[58svh] md:h-[68vh] ${wide ? "aspect-[3/2] max-w-[85vw]" : "aspect-[3/4]"}`}
-              />
-              <figcaption className="label mt-3 flex justify-between gap-6 text-muted">
-                <span>{caption}</span>
-                <span className="tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-              </figcaption>
-            </figure>
+          {course.map(({ src, alt, wide }) => (
+            <Frame
+              key={alt}
+              src={src}
+              alt={alt}
+              sizes={wide ? "(min-width: 768px) 60vw, 85vw" : "(min-width: 768px) 28vw, 62vw"}
+              className={`h-[58svh] shrink-0 snap-start md:h-[68vh] ${wide ? "aspect-[3/2] max-w-[85vw]" : "aspect-[3/4]"}`}
+            />
           ))}
         </div>
       </section>
