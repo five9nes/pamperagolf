@@ -4,7 +4,8 @@ export const site = {
   description:
     "Golf headcovers cut from handwoven Argentine cloth and finished by hand. Made in editions of five — when the cloth is gone, the run is over.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pamperagolf.com",
-  // TODO: add contact email and Instagram once confirmed.
+  // TODO: add contact email once confirmed.
+  instagram: { handle: "pamperagolf", url: "https://www.instagram.com/pamperagolf" },
   collection: {
     title: "La Pampa",
     eyebrow: "The Founding Collection",

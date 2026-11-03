@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { commerce } from "@/lib/commerce";
 import { site } from "@/lib/site";
+import { InstagramGlyph } from "./instagram-strip";
 import { Mark, Wordmark } from "./logo";
 import { PREVIEW_NOTE } from "./preview-banner";
 
@@ -44,6 +45,14 @@ export function Footer() {
           <p className="label mb-2 text-dim">Orders</p>
           <p>{site.leadTime}.</p>
           <p>Shipping within the United States.</p>
+          <a
+            href={site.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex w-fit items-center gap-2 hover:text-coral"
+          >
+            <InstagramGlyph className="size-4" />@{site.instagram.handle}
+          </a>
         </div>
       </div>
 

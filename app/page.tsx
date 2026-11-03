@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { Glyphs } from "@/components/glyphs";
+import { InstagramStrip } from "@/components/instagram-strip";
 import { Mark } from "@/components/logo";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
@@ -258,6 +259,8 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      <InstagramStrip />
 
       {/* Closing call before the footer is revealed underneath. */}
       <section className="container-page pt-16 pb-28 text-center md:pt-24 md:pb-40">
