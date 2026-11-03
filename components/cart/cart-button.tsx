@@ -9,10 +9,13 @@ export function CartButton() {
     <button
       type="button"
       onClick={open}
-      className="label -mr-2 p-2 hover:underline hover:underline-offset-4"
+      className="flex items-center gap-1.5"
       aria-label={`Open cart, ${count} ${count === 1 ? "item" : "items"}`}
     >
-      Cart <span className="tabular-nums">({count})</span>
+      Cart
+      <span className="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-coral px-1 text-[10px] text-ink tabular-nums">
+        {count}
+      </span>
     </button>
   );
 }

@@ -23,7 +23,7 @@ export function Gallery({ images, title }: { images: ImageType[]; title: string 
         tabIndex={0}
       >
         {images.map((image, i) => (
-          <div key={image.url} className="relative aspect-[4/5] w-full shrink-0 snap-center overflow-hidden bg-tile">
+          <div key={image.url} className="relative aspect-[4/5] w-full shrink-0 snap-center overflow-hidden bg-tile lg:rounded-xl">
             <Image
               src={image.url}
               alt={image.altText ?? title}

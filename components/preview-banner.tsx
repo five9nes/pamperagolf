@@ -1,7 +1,10 @@
+export const PREVIEW_NOTE = "Preview catalog — names, prices and stock are placeholders until Shopify is connected.";
+
+/** Desktop only; on small screens the same note sits in the footer, clear of the sticky cart bar. */
 export function PreviewBanner() {
   return (
-    <div className="bg-coral px-3 py-1.5 text-center text-[11px] font-medium tracking-wide text-ink uppercase">
-      Preview catalog — product names, prices and stock are placeholders until Shopify is connected.
-    </div>
+    <p className="label fixed bottom-4 left-4 z-30 hidden max-w-xs rounded-2xl bg-coral px-3.5 py-2 text-[10px] text-ink shadow-[0_8px_30px_rgb(0_0_0/0.12)] md:block">
+      {PREVIEW_NOTE}
+    </p>
   );
 }

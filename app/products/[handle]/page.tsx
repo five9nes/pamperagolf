@@ -68,8 +68,8 @@ export default async function ProductPage({ params }: PageProps<"/products/[hand
               <span aria-current="page">{product.title}</span>
             </nav>
             <span className="chip">{product.availableForSale ? site.collection.eyebrow : "Sold out"}</span>
-            <h1 className="title mt-3 text-lg sm:text-xl">{product.title}</h1>
-            {product.subtitle && <p className="mt-1 text-[13px] text-muted">{product.subtitle}</p>}
+            <h1 className="display mt-4 text-[2.5rem] sm:text-[3rem]">{product.title}</h1>
+            {product.subtitle && <p className="mt-2 text-[14px] text-muted">{product.subtitle}</p>}
 
             <div className="mt-5">
               <AddToCart title={product.title} variants={product.variants} />

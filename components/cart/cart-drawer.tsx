@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { formatMoney } from "@/lib/format";
+import { lockScroll } from "@/lib/motion";
 import { site } from "@/lib/site";
 import { useCart } from "./cart-context";
 
@@ -16,6 +17,7 @@ export function CartDrawer() {
     if (!el) return;
     if (isOpen && !el.open) el.showModal();
     if (!isOpen && el.open) el.close();
+    lockScroll(isOpen);
   }, [isOpen]);
 
   const lines = cart?.lines ?? [];
@@ -26,6 +28,7 @@ export function CartDrawer() {
       onClose={close}
       onClick={(e) => e.target === dialog.current && close()}
       aria-labelledby="cart-title"
+      data-lenis-prevent
       className="m-0 ml-auto h-dvh max-h-dvh w-full max-w-md bg-paper p-0 text-ink open:flex open:flex-col"
     >
       <div className="flex h-14 items-center justify-between border-b border-line px-4">
@@ -54,7 +57,7 @@ export function CartDrawer() {
                 <Link
                   href={`/products/${line.merchandise.product.handle}`}
                   onClick={close}
-                  className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden bg-tile"
+                  className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden rounded-lg bg-tile"
                 >
                   {image && (
                     <Image src={image.url} alt={image.altText ?? ""} fill sizes="80px" className="object-cover" />
@@ -69,7 +72,7 @@ export function CartDrawer() {
                     <p className="text-[13px]">{formatMoney(line.merchandise.price)}</p>
                   </div>
                   <div className="mt-auto flex items-center justify-between pt-3">
-                    <div className="flex items-center border border-line">
+                    <div className="flex items-center rounded-full border border-line">
                       <button
                         type="button"
                         aria-label={`Remove one ${line.merchandise.product.title}`}

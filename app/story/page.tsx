@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Mark } from "@/components/logo";
+import { processSteps } from "@/lib/site";
 import reeds from "@/public/images/lifestyle/reeds.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import bagTrio from "@/public/images/lifestyle/bag-trio.jpg";
@@ -25,14 +26,6 @@ const cloth = [
   ["Run", "Varies, dependent on harvest"],
 ] as const;
 
-const steps = [
-  ["The Flock", "Sheep in the south, alpaca in the north, in communities where the flock has been the family's living for as long as anyone can account for."],
-  ["Spinning", "The fleece is sorted by hand, washed, and spun on a spindle — then spun a second time, two threads twisted into one."],
-  ["Dyeing", "Colour comes from plants, flowers, vegetables, and smoke. Natural dye never lands evenly, so no two lengths of the same colour match."],
-  ["The Loom", "The looms are wooden and the weavers built them. Each community weaves differently, and you can see the region in the cloth if you know what to look for."],
-  ["Cutting", "Every length is catalogued: fibre, width, weave, weight, how much of it exists. That last number decides everything."],
-  ["Finishing", "Cut to the pattern, lined in pile, banded with the Guarda Pampa, elasticated, labelled — and numbered."],
-] as const;
 
 function Section({
   id,
@@ -48,7 +41,7 @@ function Section({
   return (
     <section id={id} className="scroll-mt-24">
       <span className="chip">{eyebrow}</span>
-      <h2 className="title mt-3 text-2xl sm:text-3xl">{title}</h2>
+      <h2 data-reveal="lines" className="display mt-4 text-[2.25rem] sm:text-[3rem]">{title}</h2>
       <div className="mt-5 space-y-4 text-[15px] leading-relaxed">{children}</div>
     </section>
   );
@@ -57,12 +50,12 @@ function Section({
 export default function StoryPage() {
   return (
     <>
-      <section className="relative isolate flex h-[64svh] min-h-[26rem] items-end overflow-hidden text-white">
+      <section data-tone="dark" className="relative isolate mx-[clamp(0.75rem,1.6vw,1.5rem)] flex h-[70svh] min-h-[26rem] items-end overflow-hidden rounded-[1.25rem] text-white">
         <Image src={reeds} alt="Pampas grass and scrub at the edge of the Marine Park course" fill preload sizes="100vw" className="-z-10 object-cover" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/55 to-black/0" />
         <div className="container-page pb-10">
           <p className="label text-white/85">Our Story</p>
-          <h1 className="title mt-3 max-w-3xl text-[2rem] text-balance sm:text-5xl">
+          <h1 data-reveal="lines" className="display mt-3 max-w-4xl text-[2.6rem] sm:text-[4.5rem]">
             La pampa is the grassland. The pampero is the wind that crosses it.
           </h1>
         </div>
@@ -165,7 +158,7 @@ export default function StoryPage() {
               steps.
             </p>
             <ol className="grid gap-x-8 gap-y-6 border-t border-line pt-6 sm:grid-cols-2">
-              {steps.map(([title, body], i) => (
+              {processSteps.map(([title, body], i) => (
                 <li key={title}>
                   <p className="label text-[11px] text-coral-ink tabular-nums">{String(i + 1).padStart(2, "0")}</p>
                   <h3 className="title mt-1.5 text-sm">{title}</h3>
@@ -183,7 +176,7 @@ export default function StoryPage() {
               { src: bagTrio, alt: "Plaid, tweed and crochet covers in a stand bag" },
               { src: fairwayWide, alt: "Two bags on the fairway at Marine Park" },
             ].map(({ src, alt }) => (
-              <div key={alt} className="relative aspect-[4/5] overflow-hidden bg-tile">
+              <div key={alt} className="relative aspect-[4/5] overflow-hidden rounded-xl bg-tile">
                 <Image src={src} alt={alt} fill sizes="28rem" className="object-cover" />
               </div>
             ))}
@@ -193,7 +186,7 @@ export default function StoryPage() {
 
       <section className="container-page">
         <div className="border-y border-line py-16 text-center md:py-20">
-          <h2 className="title mx-auto max-w-2xl text-2xl text-balance sm:text-3xl">
+          <h2 data-reveal="lines" className="display mx-auto max-w-3xl text-[2.25rem] sm:text-[3.5rem]">
             A rug is finished when it comes off the loom. A headcover is only beginning.
           </h2>
           <Link

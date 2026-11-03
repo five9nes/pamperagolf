@@ -1,23 +1,31 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
-/* Brand palette from the Pampera Brand Book, set on a white gallery ground.
-   Coral (#f37f58) is only 2.3:1 on white, so it is used for the mark, rules and
-   fills — never for body text. Small coral text uses coral-ink (6:1). */
+/* Pampera palette: orange #f5866b on a #f2f2f2 ground (set 2026-11-03), with warm near-blacks
+   for the dark panels. The orange is only 2.2:1 on the ground, so it is used for the mark,
+   fills and large shapes — never small text. Ink on orange is 7:1. Small orange-family text
+   uses coral-ink (5:1). */
 @theme {
-  --color-paper: #ffffff;
-  --color-tile: #f3f1ec;
-  --color-chip: #ebe8e1;
+  --color-paper: #f2f2f2;
+  --color-tile: #e6e3dd;
+  --color-chip: #e6e3dd;
   --color-bone: #edeade;
   --color-charcoal: #3b3b3b;
-  --color-ink: #222222;
-  --color-muted: #5f5a52;
-  --color-coral: #f37f58;
+  --color-ink: #1b1a18;
+  --color-night: #262320;
+  --color-coal: #131211;
+  --color-muted: #67625a;
+  --color-dim: #a7a198;
+  --color-coral: #f5866b;
   --color-coral-ink: #a8441f;
-  --color-line: #e3e0d9;
+  --color-line: #d8d4cc;
+  --color-line-dark: #3d3935;
 
-  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -39,35 +47,52 @@
   }
 
   dialog::backdrop {
-    background: rgb(34 34 34 / 0.4);
+    background: rgb(19 18 17 / 0.45);
   }
 }
 
-/* Small uppercase UI label — nav, chips, section heads, buttons. */
+/* Tiny uppercase caption — nav, corner notes, meta. */
 @utility label {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   line-height: 1.3;
   text-transform: uppercase;
 }
 
-/* Uppercase title, medium weight: product names, section titles, hero lines. */
+/* Sentence-case heading: product names, section titles. */
 @utility title {
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.08;
-  text-transform: uppercase;
+  font-weight: 450;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Large display type for statements and hero lines. */
+@utility display {
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* Serif italic accent for single words inside display lines. */
+@utility accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 @utility chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.55rem;
-  background: var(--color-chip);
-  font-size: 0.6875rem;
+  height: 1.375rem;
+  padding-inline: 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.625rem;
   font-weight: 500;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -75,46 +100,78 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 2.75rem;
-  padding-inline: 1.5rem;
+  gap: 0.6rem;
+  height: 3rem;
+  padding-inline: 1.6rem;
+  border-radius: 999px;
   background: var(--color-ink);
-  color: #fff;
-  font-size: 0.8125rem;
+  color: var(--color-paper);
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: background-color 150ms;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    background-color 250ms var(--ease-out-soft),
+    color 250ms var(--ease-out-soft);
 
   &:hover {
-    background: #000;
+    background: var(--color-coral);
+    color: var(--color-ink);
   }
   &:disabled {
     cursor: not-allowed;
-    background: rgb(34 34 34 / 0.35);
+    background: rgb(27 26 24 / 0.3);
+    color: var(--color-paper);
   }
 }
 
-/* Small white button that sits on photography. */
+/* Light pill for photography and dark panels. */
 @utility btn-light {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 2rem;
-  padding-inline: 1.25rem;
-  background: #fff;
+  gap: 0.6rem;
+  height: 2.5rem;
+  padding-inline: 1.3rem;
+  border-radius: 999px;
+  background: var(--color-paper);
   color: var(--color-ink);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.03em;
-  transition: background-color 150ms;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 250ms var(--ease-out-soft);
 
   &:hover {
-    background: var(--color-bone);
+    background: var(--color-coral);
+  }
+}
+
+/* Text link with an arrow that slides on hover. */
+@utility link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  &::after {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: currentColor;
+    transition: width 400ms var(--ease-expo);
+  }
+  &:hover::after {
+    width: 3.5rem;
   }
 }
 
 @utility container-page {
   width: 100%;
-  padding-inline: 0.75rem;
+  padding-inline: clamp(0.75rem, 1.6vw, 1.5rem);
 }
 
 /* Guarda Pampa border: a row of stepped crosses used as a divider. */
@@ -125,7 +182,40 @@
   mask: url("/brand/guarda.svg") repeat-x left center / auto 10px;
 }
 
+/* Animated elements start hidden once JS is known to be running; motion.ts reveals them.
+   The failsafe shows them anyway if scripts never get that far. */
+html.js [data-reveal],
+html.js [data-glyphs] {
+  visibility: hidden;
+  animation: reveal-failsafe 0s 4s forwards;
+}
+
+@keyframes reveal-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+
+html:not([data-intro="playing"]) .preloader {
+  display: none;
+}
+
+html[data-intro="playing"] .preloader {
+  animation: preloader-failsafe 0s 7s forwards;
+}
+
+@keyframes preloader-failsafe {
+  to {
+    visibility: hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal],
+  html.js [data-glyphs] {
+    visibility: visible;
+  }
+
   *,
   *::before,
   *::after {

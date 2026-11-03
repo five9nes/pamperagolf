@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { commerce } from "@/lib/commerce";
 import { site } from "@/lib/site";
-import { Mark } from "./logo";
+import { Mark, Wordmark } from "./logo";
+import { PREVIEW_NOTE } from "./preview-banner";
 
 const columns = [
   {
@@ -20,31 +22,40 @@ const columns = [
   },
 ];
 
+/** Sits under <main> and is uncovered as the page scrolls off (sticky on md+). */
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-line">
-      <div className="container-page grid gap-10 pt-12 pb-16 md:grid-cols-[repeat(2,12rem)_1fr]">
+    <footer data-tone="dark" className="bottom-0 z-0 bg-coal text-paper md:sticky">
+      <div className="container-page grid gap-12 pt-20 pb-10 md:grid-cols-12 md:pt-28">
+        <p className="display text-[2.25rem] md:col-span-6 md:text-[3.5rem]">
+          A rug is finished when it comes off the loom. A headcover is only <span className="accent">beginning.</span>
+        </p>
         {columns.map((col) => (
-          <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2.5">
-            <p className="label text-muted">{col.title}</p>
+          <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2 text-[13px] md:col-span-2 md:col-start-auto">
+            <p className="label mb-2 text-dim">{col.title}</p>
             {col.links.map((link) => (
-              <Link key={link.href} href={link.href} className="label hover:underline hover:underline-offset-4">
+              <Link key={link.href} href={link.href} className="w-fit hover:text-coral">
                 {link.label}
               </Link>
             ))}
           </nav>
         ))}
-        <div className="md:justify-self-end md:text-right">
-          <p className="label text-muted">{site.tagline}</p>
-          <p className="mt-2.5 max-w-xs text-[13px] leading-relaxed md:ml-auto">
-            Handwoven Argentine cloth, cut and finished by hand. Made in editions of five. Shipping within the United
-            States.
-          </p>
+        <div className="flex flex-col gap-2 text-[13px] md:col-span-2">
+          <p className="label mb-2 text-dim">Orders</p>
+          <p>{site.leadTime}.</p>
+          <p>Shipping within the United States.</p>
         </div>
       </div>
-      <div className="container-page flex flex-col items-center gap-3 pb-8">
-        <Mark className="h-4 w-auto text-coral" />
-        <p className="label">© Pampera {new Date().getFullYear()}</p>
+
+      <div className="container-page">
+        <Wordmark tone="bone" className="h-auto w-full opacity-95" />
+      </div>
+
+      <div className="container-page flex flex-col gap-3 py-6 text-[11px] text-dim md:flex-row md:items-center md:justify-between">
+        <p className="label">© {site.name} {new Date().getFullYear()}</p>
+        <Mark className="hidden h-4 w-auto text-coral md:block" />
+        <p className="label">Handwoven in Argentina · Made for the golf bag</p>
+        {commerce.mode === "preview" && <p className="label text-coral md:hidden">{PREVIEW_NOTE}</p>}
       </div>
     </footer>
   );

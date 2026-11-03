@@ -32,7 +32,7 @@ export function QuickAdd({ title, variants }: { title: string; variants: Variant
                     setOpen(false);
                   })
                 }
-                className={`label h-9 flex-1 border border-ink/80 bg-paper transition-colors hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:border-line disabled:text-muted disabled:hover:bg-paper ${
+                className={`label h-9 flex-1 rounded-full bg-paper/95 backdrop-blur-sm transition-colors hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:text-muted disabled:hover:bg-paper/95 ${
                   variant.availableForSale ? "" : "line-through"
                 }`}
               >
@@ -47,7 +47,7 @@ export function QuickAdd({ title, variants }: { title: string; variants: Variant
         aria-expanded={open}
         aria-label={open ? "Close size options" : `Quick add ${title}`}
         onClick={() => setOpen((o) => !o)}
-        className="grid size-8 place-items-center border border-ink/80 bg-paper/90 text-lg leading-none transition-colors hover:bg-paper"
+        className="grid size-9 place-items-center rounded-full bg-paper/90 text-lg leading-none backdrop-blur-sm transition-colors duration-300 hover:bg-coral"
       >
         <span aria-hidden className={`transition-transform ${open ? "rotate-45" : ""}`}>
           +

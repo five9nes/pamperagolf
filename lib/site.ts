@@ -26,6 +26,16 @@ export const sizeGuide: Record<string, { fits: string; dimensions: string }> = {
   },
 };
 
+/** From the brand book: the six stages each length of cloth goes through. */
+export const processSteps = [
+  ["The Flock", "Sheep in the south, alpaca in the north, in communities where the flock has been the family's living for as long as anyone can account for."],
+  ["Spinning", "The fleece is sorted by hand, washed, and spun on a spindle — then spun a second time, two threads twisted into one."],
+  ["Dyeing", "Colour comes from plants, flowers, vegetables, and smoke. Natural dye never lands evenly, so no two lengths of the same colour match."],
+  ["The Loom", "The looms are wooden and the weavers built them. Each community weaves differently, and you can see the region in the cloth if you know what to look for."],
+  ["Cutting", "Every length is catalogued: fibre, width, weave, weight, how much of it exists. That last number decides everything."],
+  ["Finishing", "Cut to the pattern, lined in pile, banded with the Guarda Pampa, elasticated, labelled — and numbered."],
+] as const;
+
 export const SIZE_OPTION = "Size";
 
 export const materials = [

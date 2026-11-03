@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ProductCard } from "@/components/product/product-card";
+import { Glyphs } from "@/components/glyphs";
+import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
 import { site } from "@/lib/site";
 
@@ -13,26 +14,34 @@ export default async function ShopPage() {
   const products = await commerce.getCollectionProducts();
   const available = products.filter((p) => p.availableForSale).length;
   return (
-    <div className="container-page pt-6">
-      <header className="flex flex-col gap-3 border-b border-line pb-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h1 className="title text-2xl sm:text-3xl">{site.collection.title}</h1>
-          <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-muted">
-            {site.collection.eyebrow}. Every design is released once, in an edition of five — {site.edition.driver}{" "}
-            driver covers and {site.edition.fairway} fairway wood covers. {site.leadTime}.
+    <>
+      <section className="container-page pt-14 pb-16 text-center md:pt-24 md:pb-24">
+        <p data-reveal="up" className="label text-muted">
+          {site.collection.eyebrow}
+        </p>
+        <h1 data-reveal="lines" className="display mt-5 text-[4.5rem] md:text-[9.5rem]">
+          {site.collection.title}
+        </h1>
+        <p data-reveal="up" className="mx-auto mt-8 max-w-md text-[15px] leading-relaxed text-muted">
+          Every design is released once, in an edition of five — {site.edition.driver} driver covers and{" "}
+          {site.edition.fairway} fairway wood covers. {site.leadTime}.
+        </p>
+        <Glyphs className="mt-10" />
+      </section>
+
+      <div className="container-page">
+        <div className="grid grid-cols-2 gap-4 border-b border-line pb-4 md:grid-cols-12">
+          <p className="label md:col-span-3">
+            A founding collection
+            <br />
+            of {products.length} designs
+          </p>
+          <p className="label justify-self-end text-muted md:col-span-3 md:col-start-10">
+            {available} of {products.length} available
           </p>
         </div>
-        <p className="label text-[11px] text-muted">
-          {products.length} designs · {available} available
-        </p>
-      </header>
-      <ul className="mt-5 grid grid-cols-2 gap-x-2.5 gap-y-8 lg:grid-cols-4">
-        {products.map((product, i) => (
-          <li key={product.id}>
-            <ProductCard product={product} preload={i < 4} />
-          </li>
-        ))}
-      </ul>
-    </div>
+        <ProductGrid products={products} preload={4} />
+      </div>
+    </>
   );
 }
