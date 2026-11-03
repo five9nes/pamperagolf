@@ -114,12 +114,12 @@ export default async function Home() {
               data-reveal="lines"
               className="display mx-auto mt-6 max-w-6xl text-[2.6rem] sm:text-[3.75rem] md:text-[5.25rem]"
             >
-              A barrel headcover, cut from <span className="accent">handwoven</span> cloth, lined, and finished by hand.
+              A barrel headcover, cut from <span className="accent">handwoven</span> cloth, lined and finished in the workshop.
             </h2>
             <p data-reveal="up" className="mx-auto mt-10 max-w-md text-[15px] leading-relaxed text-muted">
-              Looped wool and alpaca woven through with mohair, brushed after the loom and graded to fifty thousand
-              Martindale rubs — an upholstery rating, for something that spends its life being pulled off and thrown
-              in a bag.
+              Looped wool and alpaca, woven through with mohair and brushed once it comes off the loom. The cloth is
+              rated to 50,000 Martindale rubs, an upholstery standard, for something that spends its life being pulled
+              off and thrown in a bag.
             </p>
             <Glyphs className="mt-10" />
           </div>
