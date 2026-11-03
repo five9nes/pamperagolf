@@ -28,7 +28,7 @@ export function Footer() {
     <footer data-tone="dark" className="bottom-0 z-0 bg-coal text-paper md:sticky">
       <div className="container-page grid gap-12 pt-20 pb-10 md:grid-cols-12 md:pt-28">
         <p className="display text-[2.25rem] md:col-span-6 md:text-[3.5rem]">
-          A rug is finished when it comes off the loom. A headcover is only <span className="accent">beginning.</span>
+          A fabric is finished when it comes off the loom. A headcover is only the <span className="accent">beginning.</span>
         </p>
         {columns.map((col) => (
           <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2 text-[13px] md:col-span-2 md:col-start-auto">

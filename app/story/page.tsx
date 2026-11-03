@@ -187,7 +187,7 @@ export default function StoryPage() {
       <section className="container-page">
         <div className="border-y border-line py-16 text-center md:py-20">
           <h2 data-reveal="lines" className="display mx-auto max-w-3xl text-[2.25rem] sm:text-[3.5rem]">
-            A rug is finished when it comes off the loom. A headcover is only beginning.
+            A fabric is finished when it comes off the loom. A headcover is only the beginning.
           </h2>
           <Link
             href="/shop"
