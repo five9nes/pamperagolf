@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Mark } from "@/components/logo";
-import { processSteps } from "@/lib/site";
+import { clothSpec, processSteps } from "@/lib/site";
 import reeds from "@/public/images/lifestyle/reeds.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import bagTrio from "@/public/images/lifestyle/bag-trio.jpg";
@@ -15,16 +15,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/story" },
 };
 
-const cloth = [
-  ["Cloth", "Wool 45% · Alpaca 20% · Mohair 20% · Polyamide 15%"],
-  ["Width", "138 cm"],
-  ["Abrasion", "50,000 Martindale"],
-  ["Finish", "Brushed after weaving"],
-  ["Lining", "Pile sherpa"],
-  ["Trim", "Guarda Pampa ribbon, 1 in"],
-  ["Closure", "Internal elastic, no hardware"],
-  ["Run", "Varies, dependent on harvest"],
-] as const;
 
 
 function Section({
@@ -142,7 +132,7 @@ export default function StoryPage() {
               life being pulled off and thrown in a bag, which is the whole reason we specified it.
             </p>
             <dl className="divide-y divide-line border-y border-line text-[14px]">
-              {cloth.map(([term, detail]) => (
+              {clothSpec.map(([term, detail]) => (
                 <div key={term} className="grid grid-cols-[7.5rem_1fr] gap-4 py-3">
                   <dt className="label pt-0.5 text-muted">{term}</dt>
                   <dd>{detail}</dd>

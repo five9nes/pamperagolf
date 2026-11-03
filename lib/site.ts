@@ -27,6 +27,18 @@ export const sizeGuide: Record<string, { fits: string; dimensions: string }> = {
   },
 };
 
+/** Specification of the founding cloth, from the brand book. */
+export const clothSpec = [
+  ["Cloth", "Wool 45% · Alpaca 20% · Mohair 20% · Polyamide 15%"],
+  ["Width", "138 cm"],
+  ["Abrasion", "50,000 Martindale"],
+  ["Finish", "Brushed after weaving"],
+  ["Lining", "Pile sherpa"],
+  ["Trim", "Guarda Pampa ribbon, 1 in"],
+  ["Closure", "Internal elastic, no hardware"],
+  ["Run", "Varies, dependent on harvest"],
+] as const;
+
 /** From the brand book: the six stages each length of cloth goes through. */
 export const processSteps = [
   ["The Flock", "Sheep in the south, alpaca in the north, in communities where the flock has been the family's living for as long as anyone can account for."],

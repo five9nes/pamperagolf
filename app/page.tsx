@@ -5,12 +5,10 @@ import { InstagramStrip } from "@/components/instagram-strip";
 import { Mark } from "@/components/logo";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
-import { processSteps, site } from "@/lib/site";
+import { clothSpec, processSteps, site } from "@/lib/site";
 import heroImage from "@/public/images/lifestyle/hero.jpg";
 import plaidDetail from "@/public/images/lifestyle/plaid-detail.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
-import crochetDetail from "@/public/images/lifestyle/crochet-detail.jpg";
-import bagTrio from "@/public/images/lifestyle/bag-trio.jpg";
 import swing from "@/public/images/lifestyle/swing.jpg";
 import flagBag from "@/public/images/lifestyle/flag-bag.jpg";
 import fairwayWide from "@/public/images/lifestyle/fairway-wide.jpg";
@@ -127,27 +125,48 @@ export default async function Home() {
             <Glyphs className="mt-10" />
           </div>
 
-          {/* Photos scattered at different depths around a pinned line. */}
-          <div className="relative mt-16 h-[120svh] md:mt-10 md:h-[175vh]">
-            <div className="absolute inset-x-0 top-[40%] z-10 container-page text-center md:sticky md:top-[38svh]">
-              <p className="display mx-auto max-w-xl text-[2rem] md:text-[3rem]">
-                Every length is counted. That number decides <span className="accent">everything.</span>
+          {/* The cloth: what it is, beside a close-up of it. */}
+          <div className="container-page mt-24 grid gap-14 md:mt-36 md:grid-cols-12 md:items-center md:gap-6">
+            <div className="md:col-span-5 md:col-start-2">
+              <p data-reveal="up" className="label text-muted">
+                The Cloth
               </p>
-              <Link href="/story#the-cloth" className="link-arrow mt-6">
-                The cloth
+              <h3 data-reveal="lines" className="display mt-5 text-[2.5rem] md:text-[3.75rem]">
+                Every length is counted. That number decides <span className="accent">everything.</span>
+              </h3>
+              <p data-reveal="up" className="mt-6 max-w-md text-[15px] leading-relaxed text-muted">
+                Each length is catalogued when it comes off the loom: fibre, width, weave, weight, and how much of it
+                exists. When it runs out, so does the design.
+              </p>
+              <dl data-reveal="up" className="mt-8 divide-y divide-line border-y border-line text-[14px]">
+                {clothSpec
+                  .filter(([term]) => ["Cloth", "Abrasion", "Lining", "Trim", "Closure"].includes(term))
+                  .map(([term, detail]) => (
+                    <div key={term} className="grid grid-cols-[6.5rem_1fr] gap-4 py-3">
+                      <dt className="label pt-0.5 text-muted">{term}</dt>
+                      <dd>{detail}</dd>
+                    </div>
+                  ))}
+              </dl>
+              <Link href="/story#the-cloth" className="link-arrow mt-8">
+                More on the cloth
               </Link>
             </div>
-            <div data-parallax="0.5" className="absolute z-20 top-[2%] left-[4%] w-[38vw] md:left-[8%] md:w-[19vw]">
-              <Frame src={plaidDetail} alt="Navy plaid cloth with its Guarda Pampa band" sizes="(min-width: 768px) 19vw, 38vw" className="aspect-[3/4]" />
-            </div>
-            <div data-parallax="-0.3" className="absolute z-20 top-[8%] right-[6%] md:top-[14%] w-[30vw] md:right-[10%] md:w-[14vw]">
-              <Frame src={tagDetail} alt="The woven Pampera label" sizes="(min-width: 768px) 14vw, 30vw" className="aspect-[3/4]" />
-            </div>
-            <div data-parallax="0.9" className="absolute z-20 top-[66%] left-[6%] md:top-[58%] w-[34vw] md:left-[18%] md:w-[16vw]">
-              <Frame src={crochetDetail} alt="Crochet patchwork and rose tweed up close" sizes="(min-width: 768px) 16vw, 34vw" className="aspect-[3/4]" />
-            </div>
-            <div data-parallax="0.35" className="absolute z-20 top-[72%] right-[4%] md:top-[66%] w-[42vw] md:right-[16%] md:w-[22vw]">
-              <Frame src={bagTrio} alt="Plaid, tweed and crochet covers in a stand bag" sizes="(min-width: 768px) 22vw, 42vw" className="aspect-[3/4]" />
+            <div className="relative pb-16 md:col-span-5 md:col-start-7 md:pb-24">
+              <Frame
+                src={plaidDetail}
+                alt="Navy plaid cloth with its Guarda Pampa band, up close"
+                sizes="(min-width: 768px) 40vw, 92vw"
+                className="aspect-[4/5]"
+              />
+              <div data-parallax="-0.25" className="absolute right-4 bottom-0 w-[42%] md:-right-16">
+                <Frame
+                  src={tagDetail}
+                  alt="The woven Pampera label"
+                  sizes="(min-width: 768px) 17vw, 40vw"
+                  className="aspect-[3/4] ring-8 ring-paper"
+                />
+              </div>
             </div>
           </div>
         </section>
