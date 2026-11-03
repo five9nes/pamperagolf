@@ -171,9 +171,9 @@ export default async function Home() {
         <ProductGrid products={products.slice(0, 8)} />
       </section>
 
-      {/* The edition, on orange; the dark panel below slides over it. */}
+      {/* The edition, on orange and pinned; the dark panel below slides over it. */}
       <div className="mt-24 md:mt-36">
-        <section data-covered className="relative overflow-hidden bg-coral text-ink md:sticky md:top-0 md:h-svh">
+        <section className="relative overflow-hidden bg-coral text-ink md:sticky md:top-0 md:h-svh">
           <div className="flex h-full flex-col">
             <div className="container-page grid flex-1 gap-10 pt-20 pb-14 md:grid-cols-12 md:content-center md:pt-16 md:pb-8">
               <p className="label md:col-span-3">The Edition</p>
@@ -196,7 +196,6 @@ export default async function Home() {
             <div aria-hidden className="overflow-hidden pb-8">
               <div data-marquee className="guarda w-[200%]" style={{ backgroundColor: "var(--color-ink)" }} />
             </div>
-            <div data-dim className="pointer-events-none absolute inset-0 bg-coal opacity-0" />
           </div>
         </section>
 

@@ -133,7 +133,7 @@ export function choreograph(root: HTMLElement) {
 
   for (const el of all("[data-covered]")) {
     const next = el.nextElementSibling;
-    // Only recede while actually pinned under the next panel (the edition band isn't on mobile).
+    // Only recede while actually pinned under the next panel.
     if (!next || getComputedStyle(el).position !== "sticky") continue;
     const scroll = { trigger: next, start: "top bottom", end: "top top", scrub: true };
     // force3D off keeps the panel out of a GPU layer, so its text re-renders sharp while scaled.
