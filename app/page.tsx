@@ -6,7 +6,7 @@ import { Mark } from "@/components/logo";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
 import { processSteps, site } from "@/lib/site";
-import heroImage from "@/public/images/lifestyle/hero-handcrafted.jpg";
+import heroImage from "@/public/images/lifestyle/hero.jpg";
 import plaidDetail from "@/public/images/lifestyle/plaid-detail.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import crochetDetail from "@/public/images/lifestyle/crochet-detail.jpg";
@@ -31,7 +31,7 @@ function HeroMedia() {
   return (
     <Image
       src={heroImage}
-      alt="Hand crafted for a hands-on game: a pink tweed Pampera headcover lying on grass among fallen oak leaves"
+      alt="A Pampera headcover in a slate-green diamond weave lying on grass among fallen leaves"
       fill
       preload
       sizes="100vw"
