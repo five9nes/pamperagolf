@@ -12,6 +12,9 @@ export const MARK_CROSSES = MARK_PATH.split(/(?=M)/).reduce<string[]>(
   [],
 );
 
+/** A square frame around each cross (all three are 181 units across), for drawing them on their own. */
+export const CROSS_VIEWBOXES = ["102.5 0 181 181", "0 144 181 181", "205 144 181 181"];
+
 export function Mark({ className, title }: { className?: string; title?: string }) {
   return (
     <svg
