@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           {/* Sits above the footer, which is revealed from underneath as the page ends.
               overflow-x-clip keeps tilted reveals from widening the page on mobile without breaking sticky. */}
-          <main id="main" className="relative z-10 overflow-x-clip bg-paper pt-14 md:pt-16">
+          <main id="main" className="relative z-10 overflow-x-clip bg-paper pt-14 md:pt-24">
             {children}
           </main>
           <Footer />
