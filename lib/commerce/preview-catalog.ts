@@ -4,11 +4,11 @@ import type { Image, Product, Variant } from "./types";
  * Preview catalog used when Shopify isn't connected yet.
  * Las Pampas is six designs, each in driver and fairway wood, in the order of the
  * La Pampa Colección sheet (Caldén, Trigal and Ñandú form the La Guarda family).
- * Names and stories are from that sheet; prices are PLACEHOLDERS until the real
- * catalog lives in Shopify.
+ * Names and stories are from that sheet; prices are $110 driver, $100 fairway wood.
+ * Shopify takes over once it's connected.
  */
 
-const PRICE = { Driver: "185.00", "Fairway Wood": "165.00" } as const;
+const PRICE = { Driver: "110.00", "Fairway Wood": "100.00" } as const;
 
 type Seed = {
   handle: string;

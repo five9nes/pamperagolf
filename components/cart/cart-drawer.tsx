@@ -122,7 +122,7 @@ export function CartDrawer() {
             <span>Subtotal</span>
             <span>{formatMoney(cart.subtotal)}</span>
           </div>
-          <p className="mt-1 text-[12px] text-muted">Shipping and tax calculated at checkout. {site.leadTime}.</p>
+          <p className="mt-1 text-[12px] text-muted">{site.shipping}. Tax calculated at checkout. {site.leadTime}.</p>
           {cart.checkoutUrl ? (
             <a
               href={cart.checkoutUrl}

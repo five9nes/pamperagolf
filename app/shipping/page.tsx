@@ -23,7 +23,7 @@ const sections = [
   {
     title: "Shipping",
     body: [
-      "We ship within the United States only for now. Rates are calculated at checkout.",
+      "Shipping is free on every order. We ship within the United States only for now.",
       "[Ships from New York or Miami — to be confirmed.] [Carrier and service level — to be confirmed.]",
     ],
   },

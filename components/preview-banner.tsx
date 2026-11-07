@@ -1,4 +1,4 @@
-export const PREVIEW_NOTE = "Preview catalog — names, prices and stock are placeholders until Shopify is connected.";
+export const PREVIEW_NOTE = "Preview — checkout opens once Shopify is connected.";
 
 /** Desktop only; on small screens the same note sits in the footer, clear of the sticky cart bar. */
 export function PreviewBanner() {

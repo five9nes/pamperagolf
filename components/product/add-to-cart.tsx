@@ -113,7 +113,9 @@ export function AddToCart({ title, variants }: { title: string; variants: Varian
       <button ref={mainButton} type="button" disabled={!canAdd || isPending} onClick={onAdd} className="btn mt-5 w-full">
         {label}
       </button>
-      <p className="mt-3 text-center text-[12px] text-muted">{site.leadTime}</p>
+      <p className="mt-3 text-center text-[12px] text-muted">
+        {site.leadTime} · {site.shipping}
+      </p>
 
       <div
         aria-hidden={!showBar}

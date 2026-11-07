@@ -26,10 +26,11 @@ For each design in the Las Pampas collection:
 - **Description** = the story of the cloth (shown on the product page).
 - **Option** named exactly `Size` with values exactly `Driver` and `Fairway Wood`.
   The size guide and the "of 3"/"of 2" edition counts key off these names.
+- **Price**: Driver **$110**, Fairway Wood **$100**.
 - **Inventory**: track quantity — Driver **3**, Fairway Wood **2**. Leave
   *Continue selling when out of stock* **off**; that is what prevents overselling.
-- **Images**: upload from `Products/La Pampa/shopify-upload/` (already sRGB, 2400px).
-  The first image is the grid image; flat lays on grass keep the grid consistent.
+- **Images**: upload from `public/images/products/<handle>/` in this repo, in order (already sRGB).
+  The first image is the grid image and the second shows on hover.
 - **Subtitle** (optional): create a product metafield definition `custom.subtitle`
   (single line text) with **Storefronts access** enabled. Shown under the title.
 - **Sales channels**: make sure the product is published to **Headless**.
@@ -39,8 +40,8 @@ Create a manual collection with handle **`las-pampas`**, add the products, set t
 (this is the order on the site), and publish it to **Headless**.
 
 ## 5. Shipping
-**Settings → Shipping and delivery**: set the ship-from location (New York or Miami) and US
-rates. Add the lead time ("ships in 2–3 weeks") to the order confirmation email under
+**Settings → Shipping and delivery**: set the ship-from location (New York or Miami). Ship to the
+**United States only**, with a single **Free shipping** rate ($0) — the site promises free US shipping. Add the lead time ("ships in 2–3 weeks") to the order confirmation email under
 **Settings → Notifications**.
 
 ## 6. Checkout domain

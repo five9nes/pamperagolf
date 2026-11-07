@@ -13,6 +13,7 @@ export const site = {
   /** Every cut is released as one edition: 3 driver covers + 2 fairway wood covers. */
   edition: { driver: 3, fairway: 2 },
   leadTime: "Handmade to order — ships in 2–3 weeks",
+  shipping: "Free shipping within the US",
 } as const;
 
 /** Fit notes per size, keyed by the Shopify "Size" option value. */

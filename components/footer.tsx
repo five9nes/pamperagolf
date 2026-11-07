@@ -44,7 +44,7 @@ export function Footer() {
         <div className="flex flex-col gap-2 text-[13px] md:col-span-2">
           <p className="label mb-2 text-dim">Orders</p>
           <p>{site.leadTime}.</p>
-          <p>Shipping within the United States.</p>
+          <p>Free shipping within the United States.</p>
           <a
             href={site.instagram.url}
             target="_blank"
