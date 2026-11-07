@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Mark } from "@/components/logo";
-import { clothSpec, processSteps } from "@/lib/site";
+import { clothSpec, processSteps, site } from "@/lib/site";
 import mate from "@/public/images/lifestyle/mate.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
@@ -11,7 +10,7 @@ import lakeside from "@/public/images/lifestyle/campaign-9.jpg";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "How a golfer in New York and weavers in Argentina ended up making headcovers — the origin, the name, the Guarda Pampa and the cloth.",
+    "How a golfer in New York and weavers in Argentina ended up making headcovers — the origin, the cloth and the process.",
   alternates: { canonical: "/story" },
 };
 
@@ -69,35 +68,6 @@ export default function StoryPage() {
             </p>
           </Section>
 
-          <Section eyebrow="The Name" title="Of that place, of that weather.">
-            <p>
-              A pampera belongs to both the grassland and the wind — of that place, of that weather. The name commits
-              the brand to a landscape before it commits to a product.
-            </p>
-          </Section>
-
-          <Section eyebrow="The Mark" title="The Guarda Pampa.">
-            <p>
-              The pattern is Mapuche. It belongs to the people of what is now southwestern Argentina and southern Chile,
-              and it was theirs long before it was Argentina&rsquo;s. Among themselves they called it the Guarda del
-              Cacique.
-            </p>
-            <p>
-              It is built from staggered crosses, rhombuses, and paired triangles in horizontal symmetry — the lower
-              half mirrors the upper. The reading most often given is the Andes reflected in the lakes beneath them.
-              Colour carried rank: black for nobility, red for a soldier&rsquo;s courage.
-            </p>
-            <p>
-              Gauchos adopted it. Polo adopted it after that, and along the way it became decoration. We use it knowing
-              what it was and giving it new life — three stepped crosses, counted rather than sketched, because thread
-              and warp permit nothing but right angles.
-            </p>
-            <div className="flex items-center gap-6 pt-4">
-              <Mark className="h-16 w-auto text-coral" />
-              <div className="guarda flex-1" aria-hidden />
-            </div>
-          </Section>
-
           <Section id="the-cloth" eyebrow="The Cloth" title="A short history of the cloth.">
             <p>Argentine weaving runs in two traditions that never fully merged.</p>
             <p>
@@ -147,7 +117,7 @@ export default function StoryPage() {
         </div>
 
         <aside className="hidden lg:block">
-          <div className="sticky top-20 ml-auto max-w-md space-y-2.5">
+          <div className="sticky top-28 ml-auto max-w-md space-y-2.5">
             {[
               { src: tagDetail, alt: "Navy plaid cover with the woven Pampera label" },
               { src: wallPair, alt: "Caldén and Ñandú covers on a stand bag against a stone wall" },
@@ -164,13 +134,13 @@ export default function StoryPage() {
       <section className="container-page">
         <div className="border-y border-line py-16 text-center md:py-20">
           <h2 data-reveal="lines" className="display mx-auto max-w-3xl text-[2.25rem] sm:text-[3.5rem]">
-            A fabric is finished when it comes off the loom. A headcover is only the beginning.
+            From the pampas to the <span className="accent">course.</span>
           </h2>
           <Link
             href="/shop"
             className="btn mt-8"
           >
-            Shop La Pampa
+            Shop {site.collection.title}
           </Link>
         </div>
       </section>

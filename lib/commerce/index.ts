@@ -12,7 +12,7 @@ export const commerce: CommerceProvider =
     ? createShopifyProvider({
         domain,
         token,
-        collectionHandle: process.env.SHOPIFY_COLLECTION_HANDLE || "la-pampa",
+        collectionHandle: process.env.SHOPIFY_COLLECTION_HANDLE || "las-pampas",
       })
     : previewProvider;
 

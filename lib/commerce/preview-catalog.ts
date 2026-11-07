@@ -2,7 +2,7 @@ import type { Image, Product, Variant } from "./types";
 
 /*
  * Preview catalog used when Shopify isn't connected yet.
- * La Pampa is six designs, each in driver and fairway wood, in the order of the
+ * Las Pampas is six designs, each in driver and fairway wood, in the order of the
  * La Pampa Colección sheet (Caldén, Trigal and Ñandú form the La Guarda family).
  * Names and stories are from that sheet; prices are PLACEHOLDERS until the real
  * catalog lives in Shopify.

@@ -21,7 +21,7 @@ products, stock, orders, tax and checkout; this site (on Vercel) is the storefro
 3. Copy the **public access token**.
 
 ## 3. Products (one per design)
-For each design in the La Pampa collection:
+For each design in the Las Pampas collection:
 - **Title** = the design name. The URL handle becomes `/products/<handle>`.
 - **Description** = the story of the cloth (shown on the product page).
 - **Option** named exactly `Size` with values exactly `Driver` and `Fairway Wood`.
@@ -35,7 +35,7 @@ For each design in the La Pampa collection:
 - **Sales channels**: make sure the product is published to **Headless**.
 
 ## 4. Collection
-Create a manual collection with handle **`la-pampa`**, add the products, set the sort order
+Create a manual collection with handle **`las-pampas`**, add the products, set the sort order
 (this is the order on the site), and publish it to **Headless**.
 
 ## 5. Shipping
@@ -55,7 +55,7 @@ Project → Settings → Environment Variables (Production and Preview):
 | --- | --- |
 | `SHOPIFY_STORE_DOMAIN` | `your-store.myshopify.com` |
 | `SHOPIFY_STOREFRONT_ACCESS_TOKEN` | token from step 2 |
-| `SHOPIFY_COLLECTION_HANDLE` | `la-pampa` |
+| `SHOPIFY_COLLECTION_HANDLE` | `las-pampas` |
 | `SHOPIFY_WEBHOOK_SECRET` | from step 8 |
 | `NEXT_PUBLIC_SITE_URL` | `https://pamperagolf.com` |
 

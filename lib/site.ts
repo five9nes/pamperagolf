@@ -7,7 +7,7 @@ export const site = {
   // TODO: add contact email once confirmed.
   instagram: { handle: "pamperagolf", url: "https://www.instagram.com/pamperagolf" },
   collection: {
-    title: "La Pampa",
+    title: "Las Pampas",
     eyebrow: "The Founding Collection",
   },
   /** Every cut is released as one edition: 3 driver covers + 2 fairway wood covers. */
