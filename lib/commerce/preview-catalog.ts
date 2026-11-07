@@ -2,9 +2,10 @@ import type { Image, Product, Variant } from "./types";
 
 /*
  * Preview catalog used when Shopify isn't connected yet.
- * La Pampa is three designs — Caldén, Trigal and Ñandú, the La Guarda family — each in
- * driver and fairway wood. Names and stories are from the La Pampa Colección sheet;
- * prices are PLACEHOLDERS until the real catalog lives in Shopify.
+ * La Pampa is six designs, each in driver and fairway wood, in the order of the
+ * La Pampa Colección sheet (Caldén, Trigal and Ñandú form the La Guarda family).
+ * Names and stories are from that sheet; prices are PLACEHOLDERS until the real
+ * catalog lives in Shopify.
  */
 
 const PRICE = { Driver: "185.00", "Fairway Wood": "165.00" } as const;
@@ -19,6 +20,20 @@ type Seed = {
 };
 
 const seeds: Seed[] = [
+  {
+    handle: "lapacho",
+    title: "Lapacho",
+    subtitle: "Pink · lilac · cream bouclé",
+    description:
+      "Named for the lapacho rosado, the tree that blooms bright pink across Argentina in late winter. A looped bouclé in pink, lilac and cream.",
+    images: [
+      ["01", 1600, 2000, "Lapacho headcover in a pink, lilac and cream bouclé"],
+      ["02", 1200, 1501, "Close-up of the Lapacho bouclé"],
+      ["03", 1600, 2000, "Inside the Lapacho cover: pile sherpa lining and Guarda Pampa band"],
+      ["04", 1600, 2000, "Lapacho beside the Ñandú and Caldén covers on a stand bag against a stone wall"],
+    ],
+    stock: { Driver: 3, "Fairway Wood": 2 },
+  },
   {
     handle: "calden",
     title: "Caldén",
@@ -56,6 +71,34 @@ const seeds: Seed[] = [
       ["02", 1200, 1501, "Close-up of the Ñandú weave"],
       ["03", 1600, 2000, "Inside the Ñandú cover: pile sherpa lining and Guarda Pampa band"],
       ["04", 1600, 2000, "Ñandú and Caldén covers lying on the grass beside a golf bag"],
+    ],
+    stock: { Driver: 3, "Fairway Wood": 2 },
+  },
+  {
+    handle: "estancia",
+    title: "Estancia",
+    subtitle: "Burgundy · forest green plaid, tee band",
+    description:
+      "The ranch house. Heritage tweed in burgundy and forest green, banded with Guarda Pampa ribbon that holds your tees where you can reach them.",
+    images: [
+      ["01", 1600, 2000, "Estancia headcover in burgundy and forest green plaid with tees in its band"],
+      ["02", 1200, 1501, "Close-up of the Estancia tweed and Guarda Pampa tee band"],
+      ["03", 1600, 2000, "Estancia headcover from the back, showing the woven Pampera label"],
+      ["04", 1600, 2000, "Inside the Estancia cover: pile sherpa lining"],
+      ["05", 1600, 2000, "Estancia cover with tees in its band, on a bag against a stone wall"],
+    ],
+    stock: { Driver: 3, "Fairway Wood": 2 },
+  },
+  {
+    handle: "amanecer",
+    title: "Amanecer",
+    subtitle: "Grey · coral · cream plaid",
+    description: "Sunrise. Soft coral light over a grey morning, in a plaid of grey, coral and cream.",
+    images: [
+      ["01", 1600, 2000, "Amanecer headcover in a grey, coral and cream plaid"],
+      ["02", 1200, 1501, "Close-up of the Amanecer plaid"],
+      ["03", 1600, 2000, "Inside the Amanecer cover: pile sherpa lining and Guarda Pampa band"],
+      ["04", 1600, 2000, "Amanecer cover resting against a stone wall"],
     ],
     stock: { Driver: 3, "Fairway Wood": 2 },
   },

@@ -16,7 +16,7 @@ export function ProductCard({ product, preload = false }: { product: Product; pr
   const [primary, secondary] = product.images;
   const price = formatMoney(product.priceRange.minVariantPrice);
   const from = product.priceRange.minVariantPrice.amount !== product.priceRange.maxVariantPrice.amount;
-  const sizes = "(min-width: 640px) 33vw, 100vw";
+  const sizes = "(min-width: 640px) 33vw, 50vw";
 
   return (
     <div className="group">
