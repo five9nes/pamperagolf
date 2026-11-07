@@ -20,24 +20,26 @@ products, stock, orders, tax and checkout; this site (on Vercel) is the storefro
    - Read and modify carts
 3. Copy the **public access token**.
 
-## 3. Products (one per design)
-For each design in the Las Pampas collection:
-- **Title** = the design name. The URL handle becomes `/products/<handle>`.
-- **Description** = the story of the cloth (shown on the product page).
-- **Option** named exactly `Size` with values exactly `Driver` and `Fairway Wood`.
-  The size guide and the "of 3"/"of 2" edition counts key off these names.
-- **Price**: Driver **$110**, Fairway Wood **$100**.
-- **Inventory**: track quantity — Driver **3**, Fairway Wood **2**. Leave
-  *Continue selling when out of stock* **off**; that is what prevents overselling.
-- **Images**: upload from `public/images/products/<handle>/` in this repo, in order (already sRGB).
-  The first image is the grid image and the second shows on hover.
-- **Subtitle** (optional): create a product metafield definition `custom.subtitle`
-  (single line text) with **Storefronts access** enabled. Shown under the title.
-- **Sales channels**: make sure the product is published to **Headless**.
+## 3. Products — import the CSV
+`docs/shopify-products.csv` holds all six designs: names, stories, subtitles, `Size` option
+(`Driver` / `Fairway Wood`), prices ($110 / $100), stock (3 / 2, no overselling), SKUs and
+photos (Shopify downloads them from the live site). Regenerate it after catalog changes with
+`node scripts/shopify-products-csv.ts`.
+
+1. **Settings → Custom data → Products → Add definition**: name `Subtitle`, namespace and key
+   `custom.subtitle`, type *Single line text*, **Storefronts access on**. Do this *before* the
+   import so the subtitle column lands.
+2. **Products → Import**, choose the CSV, import. Check the six products appear with 2
+   variants and 3–5 photos each.
+3. Select all six → **More actions → Include in sales channels → Headless**.
+
+The option name and values must stay exactly `Size`, `Driver`, `Fairway Wood` — the size guide
+and the "of 3" / "of 2" edition counts key off them.
 
 ## 4. Collection
-Create a manual collection with handle **`las-pampas`**, add the products, set the sort order
-(this is the order on the site), and publish it to **Headless**.
+**Products → Collections → Create**: title **Las Pampas**, type *Manual*, add the six products,
+sort *Manually* in this order — Lapacho, Caldén, Trigal, Ñandú, Estancia, Amanecer — and make it
+available on **Headless**. Under *Search engine listing*, set the URL handle to **`las-pampas`**.
 
 ## 5. Shipping
 **Settings → Shipping and delivery**: set the ship-from location (New York or Miami). Ship to the
@@ -58,14 +60,14 @@ Project → Settings → Environment Variables (Production and Preview):
 | `SHOPIFY_STOREFRONT_ACCESS_TOKEN` | token from step 2 |
 | `SHOPIFY_COLLECTION_HANDLE` | `las-pampas` |
 | `SHOPIFY_WEBHOOK_SECRET` | from step 8 |
-| `NEXT_PUBLIC_SITE_URL` | `https://pamperagolf.com` |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.pamperagolf.com` |
 
-Redeploy. The coral "preview catalog" banner disappears once Shopify is connected.
+Redeploy. The coral preview note disappears once Shopify is connected.
 
 ## 8. Webhooks (instant stock updates)
 Product pages cache for up to 5 minutes. To refresh immediately after a sale or edit:
 **Settings → Notifications → Webhooks**, add JSON webhooks pointing to
-`https://pamperagolf.com/api/revalidate` for:
+`https://www.pamperagolf.com/api/revalidate` (use `www`: the bare domain redirects, and webhooks don't follow redirects) for:
 `products/create`, `products/update`, `products/delete`, `collections/update`,
 `inventory_levels/update`. Copy the signing secret shown on that page into
 `SHOPIFY_WEBHOOK_SECRET`.
