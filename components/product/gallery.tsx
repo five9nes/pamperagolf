@@ -22,18 +22,27 @@ export function Gallery({ images, title }: { images: ImageType[]; title: string 
         role="region"
         tabIndex={0}
       >
-        {images.map((image, i) => (
-          <div key={image.url} className="relative aspect-[4/5] w-full shrink-0 snap-center overflow-hidden bg-tile lg:rounded-xl">
-            <Image
-              src={image.url}
-              alt={image.altText ?? title}
-              fill
-              preload={i === 0}
-              sizes="(min-width: 1024px) 46rem, 100vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
+        {images.map((image, i) => {
+          // Photos that aren't 4:5 (campaign shots) are shown whole: in their own shape on desktop,
+          // letterboxed in the swipe frame on mobile.
+          const natural = image.width > 0 && image.height > 0 && Math.abs(image.width / image.height - 0.8) > 0.01;
+          return (
+            <div
+              key={image.url}
+              style={natural ? ({ "--ar": `${image.width} / ${image.height}` } as React.CSSProperties) : undefined}
+              className={`relative aspect-[4/5] w-full shrink-0 snap-center overflow-hidden lg:rounded-xl ${natural ? "bg-paper lg:aspect-[var(--ar)]" : "bg-tile"}`}
+            >
+              <Image
+                src={image.url}
+                alt={image.altText ?? title}
+                fill
+                preload={i === 0}
+                sizes="(min-width: 1024px) 46rem, 100vw"
+                className={natural ? "object-contain lg:object-cover" : "object-cover"}
+              />
+            </div>
+          );
+        })}
       </div>
       {images.length > 1 && (
         <div className="mx-3 mt-2 h-0.5 bg-line lg:hidden" aria-hidden>
