@@ -2,9 +2,9 @@ import type { Image, Product, Variant } from "./types";
 
 /*
  * Preview catalog used when Shopify isn't connected yet.
- * Names, copy and prices are PLACEHOLDERS — the real catalog lives in Shopify.
- * Stock follows the edition model (3 driver, 2 fairway wood); a few variants are
- * pre-sold so the low-stock and sold-out states can be seen.
+ * La Pampa is three designs — Caldén, Trigal and Ñandú, the La Guarda family — each in
+ * driver and fairway wood. Names and stories are from the La Pampa Colección sheet;
+ * prices are PLACEHOLDERS until the real catalog lives in Shopify.
  */
 
 const PRICE = { Driver: "185.00", "Fairway Wood": "165.00" } as const;
@@ -20,92 +20,42 @@ type Seed = {
 
 const seeds: Seed[] = [
   {
-    handle: "mustard-diamond",
-    title: "Mustard Diamond",
-    subtitle: "Ochre lattice on undyed cream",
+    handle: "calden",
+    title: "Caldén",
+    subtitle: "Rust · cream geometric",
     description:
-      "Stacked diamonds in a deep ochre, woven tight over an undyed cream ground. The colour of the pampas in late summer, when the grass has turned and the light comes in low.",
+      "Named for the caldén, the signature tree of La Pampa province, with reddish wood and deep roots. A rust lattice woven over undyed cream — the anchor piece of the collection.",
     images: [
-      ["01", 1280, 1600, "Mustard diamond headcover laid flat on grass"],
-      ["02", 1280, 1600, "Mustard diamond headcover, angled view"],
-      ["03", 1067, 1600, "Mustard, rust and slate diamond covers lying beside a golf bag"],
+      ["01", 1600, 2000, "Caldén headcover in a rust and cream geometric weave"],
+      ["02", 1200, 1500, "Close-up of the Caldén weave"],
+      ["03", 1600, 2000, "Caldén and Ñandú covers on a stand bag against a stone wall"],
     ],
     stock: { Driver: 3, "Fairway Wood": 2 },
   },
   {
-    handle: "sage-diamond",
-    title: "Sage Diamond",
-    subtitle: "Slate-sage lattice on undyed cream",
+    handle: "trigal",
+    title: "Trigal",
+    subtitle: "Ochre · cream geometric",
     description:
-      "The same lattice as the Mustard, read in a cool sage that shifts toward slate under cloud. Quiet in the bag, unmistakable up close.",
+      "Wheat field. The golden Pampas at harvest, in an ochre lattice woven over undyed cream.",
     images: [
-      ["01", 1280, 1600, "Sage diamond headcover laid flat on grass"],
-      ["02", 1600, 1067, "Sage diamond cover on a driver beside a navy golf bag"],
-      ["03", 1067, 1600, "Sage, rust and mustard diamond covers on the fairway"],
-    ],
-    stock: { Driver: 2, "Fairway Wood": 2 },
-  },
-  {
-    handle: "coral-diamond",
-    title: "Coral Diamond",
-    subtitle: "Rust-coral lattice on undyed cream",
-    description:
-      "Our lattice in the warmest thread we have — a rust coral close to the brand mark itself. Sunbaked clay rather than signal orange.",
-    images: [
-      ["01", 1067, 1600, "Coral and slate diamond covers in a golf bag on a cart"],
-      ["02", 1067, 1600, "Coral diamond cover beside slate and mustard covers on grass"],
-    ],
-    stock: { Driver: 1, "Fairway Wood": 2 },
-  },
-  {
-    handle: "navy-plaid",
-    title: "Navy Plaid",
-    subtitle: "Flecked navy check with Guarda Pampa band",
-    description:
-      "A brushed, flecked navy check crossed with moss and straw lines, banded with Guarda Pampa ribbon that holds three tees where you can reach them.",
-    images: [
-      ["01", 1280, 1600, "Navy plaid headcover with tees in its band, laid flat on grass"],
-      ["02", 1067, 1600, "Close-up of the navy plaid cloth and Guarda Pampa tee band"],
-      ["03", 1067, 1600, "Navy plaid cover showing the woven Pampera label"],
-    ],
-    stock: { Driver: 3, "Fairway Wood": 0 },
-  },
-  {
-    handle: "rose-tweed",
-    title: "Rose Tweed",
-    subtitle: "Rose, wine and grey basket weave",
-    description:
-      "A loose basket weave in rose, wine and stone grey. Soft to the hand, with the irregular colour that only natural dye gives — no two lengths match.",
-    images: [
-      ["01", 1280, 1600, "Rose tweed headcover laid flat on grass"],
-      ["02", 1280, 1600, "Rose tweed headcover, second view"],
-      ["03", 1067, 1600, "Close-up of the rose tweed weave beside plaid and crochet covers"],
+      ["01", 1600, 2000, "Trigal headcover in an ochre and cream geometric weave"],
+      ["02", 1200, 1501, "Close-up of the Trigal weave"],
+      ["03", 1600, 2000, "Inside the Trigal cover: pile sherpa lining"],
     ],
     stock: { Driver: 3, "Fairway Wood": 2 },
   },
   {
-    handle: "crochet-patchwork",
-    title: "Crochet Patchwork",
-    subtitle: "Granny squares in sage, cream and clay",
+    handle: "nandu",
+    title: "Ñandú",
+    subtitle: "Charcoal · cream geometric",
     description:
-      "Hand-crocheted squares in sage and cream, framed in clay and finished with a cocoa rib. The most hand-worked cover in the collection.",
+      "The grey rhea of the Pampas, echoing the ñandú footprint on the woven tag. A charcoal lattice over undyed cream — a quiet signature piece.",
     images: [
-      ["01", 1280, 1600, "Crochet patchwork headcover laid flat on grass"],
-      ["02", 1067, 1600, "Close-up of the crochet squares and Pampera label"],
-      ["03", 1067, 1600, "Crochet, rose tweed and navy plaid covers in a golf bag"],
-    ],
-    stock: { Driver: 2, "Fairway Wood": 1 },
-  },
-  {
-    handle: "leather-check",
-    title: "Leather & Check",
-    subtitle: "Tan leather crown over terracotta check",
-    description:
-      "A tan leather crown over a terracotta and cream check. The leather takes the wear at the top; the cloth carries the colour below.",
-    images: [
-      ["01", 1280, 1600, "Leather and terracotta check headcover laid flat on grass"],
-      ["02", 1067, 1600, "Leather and check cover beside the crochet patchwork cover"],
-      ["03", 1067, 1600, "Leather and check cover in a stand bag near the green"],
+      ["01", 1600, 2000, "Ñandú headcover in a charcoal and cream geometric weave"],
+      ["02", 1200, 1501, "Close-up of the Ñandú weave"],
+      ["03", 1600, 2000, "Inside the Ñandú cover: pile sherpa lining and Guarda Pampa band"],
+      ["04", 1600, 2000, "Ñandú and Caldén covers lying on the grass beside a golf bag"],
     ],
     stock: { Driver: 3, "Fairway Wood": 2 },
   },

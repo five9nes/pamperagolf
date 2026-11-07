@@ -5,8 +5,8 @@ import { Mark } from "@/components/logo";
 import { clothSpec, processSteps } from "@/lib/site";
 import reeds from "@/public/images/lifestyle/reeds.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
-import bagTrio from "@/public/images/lifestyle/bag-trio.jpg";
-import fairwayWide from "@/public/images/lifestyle/fairway-wide.jpg";
+import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
+import lakeside from "@/public/images/lifestyle/campaign-9.jpg";
 
 export const metadata: Metadata = {
   title: "Our Story",
@@ -163,8 +163,8 @@ export default function StoryPage() {
           <div className="sticky top-20 ml-auto max-w-md space-y-2.5">
             {[
               { src: tagDetail, alt: "Navy plaid cover with the woven Pampera label" },
-              { src: bagTrio, alt: "Plaid, tweed and crochet covers in a stand bag" },
-              { src: fairwayWide, alt: "Two bags on the fairway at Marine Park" },
+              { src: wallPair, alt: "Caldén and Ñandú covers on a stand bag against a stone wall" },
+              { src: lakeside, alt: "Pampera covers on a bag lying on the slope above the lake" },
             ].map(({ src, alt }) => (
               <div key={alt} className="relative aspect-[4/5] overflow-hidden rounded-xl bg-tile">
                 <Image src={src} alt={alt} fill sizes="28rem" className="object-cover" />

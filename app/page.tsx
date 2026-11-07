@@ -7,14 +7,15 @@ import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
 import { clothSpec, processSteps, site } from "@/lib/site";
 import heroImage from "@/public/images/lifestyle/hero.jpg";
-import plaidDetail from "@/public/images/lifestyle/plaid-detail.jpg";
+import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
-import swing from "@/public/images/lifestyle/swing.jpg";
-import flagBag from "@/public/images/lifestyle/flag-bag.jpg";
-import fairwayWide from "@/public/images/lifestyle/fairway-wide.jpg";
-import cartRow from "@/public/images/lifestyle/cart-row.jpg";
-import editionWide from "@/public/images/lifestyle/slide-edition-desktop.jpg";
-import reeds from "@/public/images/lifestyle/reeds.jpg";
+import caldenWeave from "@/public/images/products/calden/02.jpg";
+import pond from "@/public/images/lifestyle/campaign-178.jpg";
+import lakeside from "@/public/images/lifestyle/campaign-7.jpg";
+import grassPair from "@/public/images/lifestyle/campaign-31.jpg";
+import skyline from "@/public/images/lifestyle/campaign-228.jpg";
+import stoneWall from "@/public/images/lifestyle/campaign-60.jpg";
+import raised from "@/public/images/lifestyle/campaign-316.jpg";
 
 /** A rounded photo frame whose image drifts inside it on scroll. */
 function Frame({ src, alt, sizes, className = "" }: { src: StaticImageData; alt: string; sizes: string; className?: string }) {
@@ -39,12 +40,12 @@ function HeroMedia() {
 }
 
 const course = [
-  { src: swing, alt: "A golfer swings behind a cart carrying Pampera covers", wide: false },
-  { src: editionWide, alt: "Slate, coral and mustard diamond covers on the grass beside a bag", wide: true },
-  { src: flagBag, alt: "Pampera covers in a stand bag near the flag", wide: false },
-  { src: fairwayWide, alt: "Two bags on the fairway", wide: false },
-  { src: reeds, alt: "Pampas grass and scrub at the edge of the course", wide: true },
-  { src: cartRow, alt: "Crochet and leather covers in a bag on the cart", wide: false },
+  { src: pond, alt: "A golfer carries his bag up from the pond, autumn trees behind", wide: false },
+  { src: lakeside, alt: "Pampera covers on a bag lying on the slope above the lake", wide: true },
+  { src: grassPair, alt: "Caldén and Ñandú covers lying on the grass beside a bag", wide: false },
+  { src: skyline, alt: "A golfer walks the ridge with his covers under one arm", wide: false },
+  { src: stoneWall, alt: "Two bags dressed in Pampera covers against a stone wall above the course", wide: true },
+  { src: raised, alt: "A golfer holds a headcover up against the sky", wide: false },
 ];
 
 export default async function Home() {
@@ -154,8 +155,8 @@ export default async function Home() {
             </div>
             <div className="relative pb-16 md:col-span-5 md:col-start-7 md:pb-24">
               <Frame
-                src={plaidDetail}
-                alt="Navy plaid cloth with its Guarda Pampa band, up close"
+                src={wallPair}
+                alt="Caldén and Ñandú covers on a stand bag against a stone wall"
                 sizes="(min-width: 768px) 40vw, 92vw"
                 className="aspect-[4/5]"
               />
@@ -233,7 +234,7 @@ export default async function Home() {
                 and numbered.
               </p>
               <div data-reveal="up" className="flex items-center gap-6 pt-4">
-                <Frame src={plaidDetail} alt="" sizes="12rem" className="h-20 w-40 rounded-full md:h-24 md:w-48" />
+                <Frame src={caldenWeave} alt="" sizes="12rem" className="h-20 w-40 rounded-full md:h-24 md:w-48" />
                 <Link href="/story#the-process" className="link-arrow text-paper">
                   Our process
                 </Link>
