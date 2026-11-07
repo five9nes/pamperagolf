@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mark } from "@/components/logo";
 import { clothSpec, processSteps } from "@/lib/site";
-import reeds from "@/public/images/lifestyle/reeds.jpg";
+import mate from "@/public/images/lifestyle/mate.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
 import lakeside from "@/public/images/lifestyle/campaign-9.jpg";
@@ -41,44 +41,31 @@ export default function StoryPage() {
   return (
     <>
       <section data-tone="dark" className="relative isolate mx-[clamp(0.75rem,1.6vw,1.5rem)] flex h-[70svh] min-h-[26rem] items-end overflow-hidden rounded-[1.25rem] text-white">
-        <Image src={reeds} alt="Pampas grass and scrub at the edge of the Marine Park course" fill preload sizes="100vw" className="-z-10 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/55 to-black/0" />
+        <Image src={mate} alt="A mate gourd filled with yerba, the bombilla resting in it" fill preload sizes="100vw" className="-z-10 object-cover" />
+        <div className="absolute inset-0 -z-10 bg-coal/35" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-black/10 to-black/0" />
         <div className="container-page pb-10">
           <p className="label text-white/85">Our Story</p>
           <h1 data-reveal="lines" className="display mt-3 max-w-4xl text-[2.6rem] sm:text-[4.5rem]">
-            La pampa is the grassland. The pampero is the wind that crosses it.
+            It all started with a conversation over mate.
           </h1>
         </div>
       </section>
 
       <div className="container-page grid gap-16 py-14 md:py-20 lg:grid-cols-[minmax(0,40rem)_1fr] lg:gap-24 lg:pl-[8vw]">
         <div className="max-w-2xl space-y-20">
-          <Section eyebrow="The Origin" title="It started with a prototype on the table.">
+          <Section
+            eyebrow="The Origin"
+            title="Steaming water, the familiar feel of a mate passing from hand to hand and a conversation about our passions."
+          >
             <p>
-              My wife&rsquo;s family is Argentine. Her mother and father made everything growing up — school projects,
-              costumes, whatever the house needed — and both of them can do things with a sewing machine I still
-              don&rsquo;t understand.
+              Our family&rsquo;s love of golf spanned generations and countries. We wanted a way to become more
+              integrated with the sport and that led to a deep education in Argentine weaving and in golf&rsquo;s history
+              in Argentina. Eventually, we formed a partnership with a weaver and the rest is history.
             </p>
             <p>
-              One Christmas I pitched her mother an idea: a golf headcover, but made of something real. Her curiosity
-              and skills with the sewing machine took over and a couple of days later there was a prototype on the
-              table.
-            </p>
-            <p>
-              That was supposed to be where it ended. Instead it turned into a long education — in Argentine weaving,
-              in the Mapuche patterns I&rsquo;d been looking at for years without understanding, and in golf in
-              Argentina, which has a history of its own. The land, the wind, the coast, and generations of people who
-              turned that land into cloth. Once you see all of it at once, a golf bag is an obvious place for it to go.
-            </p>
-            <blockquote className="border-l-2 border-coral pl-5 text-[17px] font-medium">
-              I started playing golf about a year and a half ago and got obsessed the way people do. Somewhere in there
-              I started noticing the bag itself — not the clubs, the things around them. Almost all of it is
-              disposable.
-            </blockquote>
-            <p>
-              After a trip to Argentina, we came home having forged connections with experienced weavers and a desire to
-              create something only a true golfer could understand. What could a weaver in Argentina and a golfer in
-              New York possibly have in common? An appreciation for nature and good materials.
+              What could a weaver in Argentina and a golfer in New York have in common? A love of nature and good
+              materials.
             </p>
           </Section>
 
