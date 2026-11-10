@@ -5,11 +5,10 @@ import { InstagramStrip } from "@/components/instagram-strip";
 import { Mark } from "@/components/logo";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
-import { clothSpec, processSteps, site } from "@/lib/site";
+import { clothSpec, site } from "@/lib/site";
 import heroImage from "@/public/images/lifestyle/hero.jpg";
 import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
-import caldenWeave from "@/public/images/products/calden/02.jpg";
 import pond from "@/public/images/lifestyle/campaign-178.jpg";
 import lakeside from "@/public/images/lifestyle/campaign-7.jpg";
 import grassPair from "@/public/images/lifestyle/campaign-31.jpg";
@@ -191,9 +190,9 @@ export default async function Home() {
         <ProductGrid products={products.slice(0, 8)} />
       </section>
 
-      {/* The edition, on orange and pinned; the dark panel below slides over it. */}
+      {/* The edition, on orange. */}
       <div className="mt-24 md:mt-36">
-        <section className="relative overflow-hidden bg-coral text-ink md:sticky md:top-0 md:h-svh">
+        <section className="relative overflow-hidden bg-coral text-ink md:h-svh">
           <div className="flex h-full flex-col">
             <div className="container-page grid flex-1 gap-10 pt-20 pb-14 md:grid-cols-12 md:content-center md:pt-16 md:pb-8">
               <div className="md:col-span-3">
@@ -222,39 +221,6 @@ export default async function Home() {
             <div aria-hidden className="overflow-hidden pb-8">
               <div data-marquee className="guarda w-[200%]" style={{ backgroundColor: "var(--color-ink)" }} />
             </div>
-          </div>
-        </section>
-
-        <section data-tone="dark" className="relative z-10 rounded-t-[1.75rem] bg-night text-paper">
-          <div className="container-page grid gap-12 pt-24 pb-24 md:grid-cols-12 md:pt-36 md:pb-32">
-            <h2 data-reveal="lines" className="display text-[2.75rem] md:col-span-6 md:text-[4.75rem]">
-              Five pairs of hands before <span className="accent">ours.</span>
-            </h2>
-            <div className="space-y-5 text-[15px] leading-relaxed text-paper/75 md:col-span-5 md:col-start-8 md:pt-3">
-              <p data-reveal="up">
-                The cloth in every cover has passed through five pairs of hands before we touch it — shorn, washed,
-                spun, dyed, and woven in Argentina on wooden looms, at the pace that work takes.
-              </p>
-              <p data-reveal="up">
-                What we add is the last two steps: cut to the pattern, lined in pile, banded with the Guarda Pampa,
-                and numbered.
-              </p>
-              <div data-reveal="up" className="flex items-center gap-6 pt-4">
-                <Frame src={caldenWeave} alt="" sizes="12rem" className="h-20 w-40 rounded-full md:h-24 md:w-48" />
-                <Link href="/story#the-process" className="link-arrow text-paper">
-                  Our process
-                </Link>
-              </div>
-            </div>
-            <ol className="grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line-dark pt-10 md:col-span-12 md:grid-cols-6">
-              {processSteps.map(([title, body], i) => (
-                <li key={title} data-reveal="up" data-delay={String((i % 6) * 0.06)}>
-                  <p className="label text-coral tabular-nums">{String(i + 1).padStart(2, "0")}</p>
-                  <h3 className="title mt-3 text-lg">{title}</h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-dim">{body}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
       </div>
