@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, useTransition } from "react";
 import { useCart } from "@/components/cart/cart-context";
 import type { Variant } from "@/lib/commerce/types";
 import { formatMoney, stockLabel } from "@/lib/format";
-import { editionProgress, editionSizeFor, site, sizeGuide, sizeOf } from "@/lib/site";
+import { editionProgress, editionSizeFor, preorder, site, sizeGuide, sizeOf } from "@/lib/site";
 
 export function AddToCart({ title, variants }: { title: string; variants: Variant[] }) {
   const { add, cart } = useCart();
@@ -125,7 +125,7 @@ export function AddToCart({ title, variants }: { title: string; variants: Varian
           <p className="mt-2 text-[12px] text-muted">
             {edition.reserved >= edition.total
               ? "This run is fully reserved and in production."
-              : `This run goes into production once all ${edition.total} are reserved.`}
+              : `Production starts when all ${edition.total} are reserved, or ${preorder.deadline} at the latest.`}
           </p>
         </div>
       )}

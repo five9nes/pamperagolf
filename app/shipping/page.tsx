@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { preorder, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Shipping & Returns",
@@ -23,6 +23,7 @@ const sections: { title: string; body: React.ReactNode[] }[] = [
     title: "Pre-order",
     body: [
       `Every cover is sold on pre-order. Each design is made in runs of five — ${site.edition.driver} driver and ${site.edition.fairway} fairway wood covers — and once all five in a run are reserved, the cloth is cut and the covers are made by hand.`,
+      `Production starts by ${preorder.deadline} at the latest, whether or not a run has filled, so no one waits on a run that never completes.`,
       "Most orders arrive in about 3–4 weeks. We'll email you when your run goes into production, and again with a tracking link when it ships.",
       "If we can't ship within the stated time, we'll email you before it lapses with a new date and the option to cancel for a full refund.",
     ],

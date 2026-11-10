@@ -65,9 +65,14 @@ export function editionSizeFor(size: string): number | undefined {
  * Shared copy for the product page, shipping page and cart.
  */
 export const preorder = {
+  /** Production starts on this date at the latest, whether or not every run has filled. */
+  deadline: "November 30",
   steps: [
     ["Reserve", "Pre-order now to claim one of the five covers in this run. You pay today."],
-    ["The run fills", "Once all five are reserved, the cloth is cut and every cover is made by hand."],
+    [
+      "Production begins",
+      "As soon as all five are reserved — and by November 30 at the latest, full or not — the cloth is cut and every cover is made by hand.",
+    ],
     ["It ships", "Most orders arrive in about 3–4 weeks. We'll email you when your run goes into production."],
   ],
 } as const;

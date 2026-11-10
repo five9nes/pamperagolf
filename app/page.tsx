@@ -5,7 +5,7 @@ import { InstagramStrip } from "@/components/instagram-strip";
 import { Mark } from "@/components/logo";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
-import { clothSpec, site } from "@/lib/site";
+import { clothSpec, preorder, site } from "@/lib/site";
 import heroImage from "@/public/images/lifestyle/hero.jpg";
 import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
@@ -198,8 +198,8 @@ export default async function Home() {
               <div className="md:col-span-3">
                 <p className="label">The Edition</p>
                 <p className="mt-4 max-w-[17rem] text-[14px] leading-relaxed">
-                  Every cover is made on pre-order. Reserve one of the five, and when the run fills we cut the cloth
-                  and make it by hand.
+                  Every cover is made on pre-order. Reserve one of the five, and when the run fills — or on{" "}
+                  {preorder.deadline}, whichever comes first — we cut the cloth and make it by hand.
                 </p>
               </div>
               <h2 data-reveal="lines" className="display text-[3rem] md:col-span-9 md:text-[5.5rem]">
