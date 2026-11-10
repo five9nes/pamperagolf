@@ -5,7 +5,7 @@ import { AddToCart } from "@/components/product/add-to-cart";
 import { Gallery } from "@/components/product/gallery";
 import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
-import { materials, site } from "@/lib/site";
+import { materials, preorder, site } from "@/lib/site";
 
 export async function generateStaticParams() {
   const products = await commerce.getCollectionProducts();
@@ -73,13 +73,29 @@ export default async function ProductPage({ params }: PageProps<"/products/[hand
               <span className="mx-1.5" aria-hidden>/</span>
               <span aria-current="page">{product.title}</span>
             </nav>
-            <span className="chip">{product.availableForSale ? site.collection.eyebrow : "Sold out"}</span>
+            <span className="chip">{product.availableForSale ? site.collection.eyebrow : "Fully reserved"}</span>
             <h1 className="display mt-4 text-[2.5rem] sm:text-[3rem]">{product.title}</h1>
             {product.subtitle && <p className="mt-2 text-[14px] text-muted">{product.subtitle}</p>}
 
             <div className="mt-5">
               <AddToCart title={product.title} variants={product.variants} />
             </div>
+
+            <section aria-labelledby="preorder-title" className="mt-8 rounded-xl bg-tile/60 p-5">
+              <h2 id="preorder-title" className="label text-[11px]">
+                How pre-order works
+              </h2>
+              <ol className="mt-4 space-y-3.5">
+                {preorder.steps.map(([step, body], i) => (
+                  <li key={step} className="grid grid-cols-[1.75rem_1fr] text-[13px] leading-relaxed">
+                    <span className="label pt-0.5 text-[11px] text-coral-ink tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                    <p>
+                      <span className="font-medium">{step}.</span> <span className="text-muted">{body}</span>
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </section>
 
             <div
               className="mt-8 space-y-3 text-[13px] leading-relaxed"

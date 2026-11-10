@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/commerce/types";
 import { formatMoney } from "@/lib/format";
-import { sizeOf } from "@/lib/site";
+import { editionProgress, sizeOf } from "@/lib/site";
 import { QuickAdd } from "./quick-add";
 
 function status(product: Product): string {
-  if (!product.availableForSale) return "Sold out";
-  const left = product.variants.reduce((n, v) => n + Math.max(v.quantityAvailable ?? 0, 0), 0);
-  if (product.variants.every((v) => v.quantityAvailable !== null) && left <= 2) return "Almost gone";
-  return "Edition of 5";
+  if (!product.availableForSale) return "Fully reserved";
+  const edition = editionProgress(product.variants);
+  if (!edition || edition.reserved === 0) return "Pre-order";
+  return `Pre-order · ${edition.reserved} of ${edition.total} reserved`;
 }
 
 export function ProductCard({ product, preload = false }: { product: Product; preload?: boolean }) {

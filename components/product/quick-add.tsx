@@ -16,7 +16,7 @@ export function QuickAdd({ title, variants }: { title: string; variants: Variant
   return (
     <div className="absolute inset-x-3 bottom-3 flex flex-col items-end gap-2">
       {open && (
-        <div className="flex w-full gap-1.5" role="group" aria-label={`Add ${title} to cart`}>
+        <div className="flex w-full gap-1.5" role="group" aria-label={`Pre-order ${title}`}>
           {variants.map((variant) => {
             const inCart = cart?.lines.find((l) => l.merchandise.id === variant.id)?.quantity ?? 0;
             const full = variant.quantityAvailable !== null && inCart >= variant.quantityAvailable;
@@ -45,7 +45,7 @@ export function QuickAdd({ title, variants }: { title: string; variants: Variant
       <button
         type="button"
         aria-expanded={open}
-        aria-label={open ? "Close size options" : `Quick add ${title}`}
+        aria-label={open ? "Close size options" : `Pre-order ${title}`}
         onClick={() => setOpen((o) => !o)}
         className="grid size-9 place-items-center rounded-full bg-paper/90 text-lg leading-none backdrop-blur-sm transition-colors duration-300 hover:bg-coral"
       >

@@ -2,13 +2,14 @@
 
 import Lenis from "lenis";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   choreograph,
   gsap,
   INTRO_EVENT,
   introPlaying,
   prefersReducedMotion,
+  resetScroll,
   ScrollTrigger,
   setLenis,
 } from "@/lib/motion";
@@ -16,6 +17,15 @@ import {
 /** Smooth scrolling for the whole site, plus the scroll choreography for each page. */
 export function Motion() {
   const pathname = usePathname();
+  const firstRender = useRef(true);
+  const fromHistory = useRef(false);
+
+  // Back/forward should keep the position the browser restores; anything else starts at the top.
+  useEffect(() => {
+    const onPop = () => void (fromHistory.current = true);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
@@ -40,6 +50,12 @@ export function Motion() {
   }, []);
 
   useEffect(() => {
+    // Without this, a click made while Lenis is still easing carries that momentum onto the new
+    // page and it opens partway down.
+    if (!firstRender.current) resetScroll(fromHistory.current ? window.scrollY : 0);
+    firstRender.current = false;
+    fromHistory.current = false;
+
     if (prefersReducedMotion()) return;
     const main = document.getElementById("main");
     if (!main) return;

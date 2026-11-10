@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, useTransition } from "react";
 import { useCart } from "@/components/cart/cart-context";
 import type { Variant } from "@/lib/commerce/types";
 import { formatMoney, stockLabel } from "@/lib/format";
-import { editionSizeFor, site, sizeGuide, sizeOf } from "@/lib/site";
+import { editionProgress, editionSizeFor, site, sizeGuide, sizeOf } from "@/lib/site";
 
 export function AddToCart({ title, variants }: { title: string; variants: Variant[] }) {
   const { add, cart } = useCart();
@@ -57,13 +57,14 @@ export function AddToCart({ title, variants }: { title: string; variants: Varian
   const canAdd = selected.availableForSale && !atLimit;
   const guide = sizeGuide[size];
   const stock = stockLabel(selected.quantityAvailable, editionSizeFor(size));
+  const edition = editionProgress(variants);
   const label = !selected.availableForSale
-    ? `${size} — Sold out`
+    ? `${size} — Reserved`
     : atLimit
       ? "All remaining are in your cart"
       : isPending
-        ? "Adding…"
-        : "Add to Cart";
+        ? "Reserving…"
+        : "Pre-order";
   const onAdd = () => startTransition(async () => void (await add(selected.id)));
 
   return (
@@ -100,14 +101,33 @@ export function AddToCart({ title, variants }: { title: string; variants: Varian
         )}
       </div>
 
-      {stock && (
-        <p className="mt-5 flex items-center gap-2 text-[13px]">
-          <span
-            className={`inline-block size-2 rounded-full ${selected.availableForSale ? "bg-coral" : "bg-line"}`}
-            aria-hidden
-          />
-          {selected.availableForSale ? `${stock} in this edition` : "This size has sold through"}
-        </p>
+      {edition && (
+        <div className="mt-6">
+          <div className="label flex items-baseline justify-between text-[11px]">
+            <span>
+              Edition · {edition.reserved} of {edition.total} reserved
+            </span>
+            {stock && <span className="text-muted">{selected.availableForSale ? `${size}: ${stock}` : `${size}: reserved`}</span>}
+          </div>
+          <div
+            className="mt-2 grid gap-1"
+            style={{ gridTemplateColumns: `repeat(${edition.total}, minmax(0, 1fr))` }}
+            role="meter"
+            aria-valuemin={0}
+            aria-valuemax={edition.total}
+            aria-valuenow={edition.reserved}
+            aria-label="Covers reserved in this edition"
+          >
+            {Array.from({ length: edition.total }, (_, i) => (
+              <span key={i} className={`h-1.5 rounded-full ${i < edition.reserved ? "bg-coral" : "bg-line"}`} />
+            ))}
+          </div>
+          <p className="mt-2 text-[12px] text-muted">
+            {edition.reserved >= edition.total
+              ? "This run is fully reserved and in production."
+              : `This run goes into production once all ${edition.total} are reserved.`}
+          </p>
+        </div>
       )}
 
       <button ref={mainButton} type="button" disabled={!canAdd || isPending} onClick={onAdd} className="btn mt-5 w-full">

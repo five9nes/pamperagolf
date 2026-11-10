@@ -13,6 +13,8 @@ export const EASE = "expo.out";
 let lenis: Lenis | null = null;
 export const setLenis = (instance: Lenis | null) => void (lenis = instance);
 export const lockScroll = (locked: boolean) => (locked ? lenis?.stop() : lenis?.start());
+/** Cancel any smooth-scroll momentum and jump straight to y. */
+export const resetScroll = (y: number) => lenis?.scrollTo(y, { immediate: true, force: true });
 
 export const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

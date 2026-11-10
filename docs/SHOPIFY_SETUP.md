@@ -43,7 +43,7 @@ available on **Headless**. Under *Search engine listing*, set the URL handle to 
 
 ## 5. Shipping
 **Settings → Shipping and delivery**: set the ship-from location (New York or Miami). Ship to the
-**United States only**, with a single **Free shipping** rate ($0) — the site promises free US shipping. Add the lead time ("ships in 2–3 weeks") to the order confirmation email under
+**United States only**, with a single **Free shipping** rate ($0) — the site promises free US shipping. Add the pre-order note ("ships in about 3–4 weeks, once the run of five is reserved") to the order confirmation email under
 **Settings → Notifications**.
 
 ## 6. Checkout domain

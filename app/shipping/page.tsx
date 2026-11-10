@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 /*
  * TODO(owner): the bracketed items below are placeholders — confirm the returns
- * policy, origin city and carrier before launch. Keep this page in sync with the
+ * policy before launch. Keep this page in sync with the
  * policies set in Shopify Admin → Settings → Policies (checkout links to those).
  */
 const email = (
@@ -20,9 +20,10 @@ const email = (
 
 const sections: { title: string; body: React.ReactNode[] }[] = [
   {
-    title: "Made to order",
+    title: "Pre-order",
     body: [
-      `Every cover is cut and finished by hand after you order. ${site.leadTime}, and you'll get a tracking link by email when it leaves the workshop.`,
+      `Every cover is sold on pre-order. Each design is made in runs of five — ${site.edition.driver} driver and ${site.edition.fairway} fairway wood covers — and once all five in a run are reserved, the cloth is cut and the covers are made by hand.`,
+      "Most orders arrive in about 3–4 weeks. We'll email you when your run goes into production, and again with a tracking link when it ships.",
       "If we can't ship within the stated time, we'll email you before it lapses with a new date and the option to cancel for a full refund.",
     ],
   },
@@ -30,7 +31,7 @@ const sections: { title: string; body: React.ReactNode[] }[] = [
     title: "Shipping",
     body: [
       "Shipping is free on every order. We ship within the United States only for now.",
-      "[Ships from New York or Miami — to be confirmed.] [Carrier and service level — to be confirmed.]",
+      "Orders ship from Queens, New York.",
     ],
   },
   {

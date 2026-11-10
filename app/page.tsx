@@ -98,7 +98,7 @@ export default async function Home() {
                 <p className="label text-right">
                   {site.edition.driver + site.edition.fairway} per design
                   <br />
-                  Made to order
+                  Pre-order now
                 </p>
               </div>
             </div>
@@ -196,15 +196,21 @@ export default async function Home() {
         <section className="relative overflow-hidden bg-coral text-ink md:sticky md:top-0 md:h-svh">
           <div className="flex h-full flex-col">
             <div className="container-page grid flex-1 gap-10 pt-20 pb-14 md:grid-cols-12 md:content-center md:pt-16 md:pb-8">
-              <p className="label md:col-span-3">The Edition</p>
+              <div className="md:col-span-3">
+                <p className="label">The Edition</p>
+                <p className="mt-4 max-w-[17rem] text-[14px] leading-relaxed">
+                  Every cover is made on pre-order. Reserve one of the five, and when the run fills we cut the cloth
+                  and make it by hand.
+                </p>
+              </div>
               <h2 data-reveal="lines" className="display text-[3rem] md:col-span-9 md:text-[5.5rem]">
-                Five per cut. When the cloth is gone, the run is <span className="accent">over.</span>
+                Five per run. Once all five are reserved, it goes to the <span className="accent">loom.</span>
               </h2>
               <dl className="grid grid-cols-3 gap-4 border-t border-ink/25 pt-6 md:col-span-9 md:col-start-4">
                 {[
                   [String(site.edition.driver), "Driver covers"],
                   [String(site.edition.fairway), "Fairway wood covers"],
-                  ["2–3", "Weeks, made to order"],
+                  ["3–4", "Weeks, pre-order to your door"],
                 ].map(([value, term]) => (
                   <div key={term} data-reveal="up" className="flex flex-col-reverse gap-2">
                     <dt className="label">{term}</dt>

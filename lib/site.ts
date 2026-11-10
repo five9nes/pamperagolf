@@ -4,7 +4,7 @@ export const site = {
   description:
     "Golf headcovers cut from handwoven Argentine cloth and finished by hand. Made in editions of five — when the cloth is gone, the run is over.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pamperagolf.com",
-  email: "info@pamperagolf.com",
+  email: "hello@pamperagolf.com",
   instagram: { handle: "pamperagolf", url: "https://www.instagram.com/pamperagolf" },
   collection: {
     title: "Las Pampas",
@@ -12,7 +12,7 @@ export const site = {
   },
   /** Every cut is released as one edition: 3 driver covers + 2 fairway wood covers. */
   edition: { driver: 3, fairway: 2 },
-  leadTime: "Handmade to order — ships in 2–3 weeks",
+  leadTime: "Pre-order — ships in about 3–4 weeks",
   shipping: "Free shipping within the US",
 } as const;
 
@@ -68,4 +68,24 @@ export function editionSizeFor(size: string): number | undefined {
   if (size === "Driver") return site.edition.driver;
   if (size === "Fairway Wood") return site.edition.fairway;
   return undefined;
+}
+
+/**
+ * Every cover is sold on pre-order: a run is made once all five covers in it are reserved.
+ * Shared copy for the product page, shipping page and cart.
+ */
+export const preorder = {
+  steps: [
+    ["Reserve", "Pre-order now to claim one of the five covers in this run. You pay today."],
+    ["The run fills", "Once all five are reserved, the cloth is cut and every cover is made by hand."],
+    ["It ships", "Most orders arrive in about 3–4 weeks. We'll email you when your run goes into production."],
+  ],
+} as const;
+
+/** How many of a design's edition (3 driver + 2 fairway) have been reserved, from remaining stock. */
+export function editionProgress(variants: { quantityAvailable: number | null }[]) {
+  const total = site.edition.driver + site.edition.fairway;
+  if (variants.some((v) => v.quantityAvailable === null)) return null;
+  const left = variants.reduce((n, v) => n + Math.max(v.quantityAvailable ?? 0, 0), 0);
+  return { total, reserved: Math.min(Math.max(total - left, 0), total) };
 }
