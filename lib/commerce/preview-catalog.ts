@@ -98,7 +98,7 @@ const seeds: Seed[] = [
       ["01", 1600, 2000, "Amanecer headcover in a grey, coral and cream plaid"],
       ["02", 1200, 1501, "Close-up of the Amanecer plaid"],
       ["03", 1600, 2000, "Inside the Amanecer cover: pile sherpa lining and Guarda Pampa band"],
-      ["04", 1600, 2400, "A golfer carries his bag with the Amanecer cover under his arm"],
+      ["04", 1600, 1067, "Amanecer and Estancia covers on a bag lying on the fairway"],
     ],
     stock: { Driver: 3, "Fairway Wood": 2 },
   },
