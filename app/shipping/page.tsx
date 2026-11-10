@@ -12,7 +12,13 @@ export const metadata: Metadata = {
  * policy, origin city and carrier before launch. Keep this page in sync with the
  * policies set in Shopify Admin → Settings → Policies (checkout links to those).
  */
-const sections = [
+const email = (
+  <a href={`mailto:${site.email}`} className="underline underline-offset-4">
+    {site.email}
+  </a>
+);
+
+const sections: { title: string; body: React.ReactNode[] }[] = [
   {
     title: "Made to order",
     body: [
@@ -37,8 +43,15 @@ const sections = [
     title: "Returns",
     body: [
       "[Returns policy to be confirmed — e.g. whether made-to-order covers are final sale, or returnable within a set window in unused condition.]",
-      "If your cover arrives damaged or faulty, contact us and we'll make it right. [Claim window and contact email — to be confirmed.]",
+      <>
+        If your cover arrives damaged or faulty, email {email} and we&rsquo;ll make it right. [Claim window — to be
+        confirmed.]
+      </>,
     ],
+  },
+  {
+    title: "Contact",
+    body: [<>Questions about an order, sizing or anything else: {email}.</>],
   },
 ];
 
@@ -52,8 +65,8 @@ export default function ShippingPage() {
           <section key={section.title} className="grid gap-3 py-8 sm:grid-cols-[11rem_1fr] sm:gap-8">
             <h2 className="label pt-0.5">{section.title}</h2>
             <div className="space-y-3 text-[14px] leading-relaxed">
-              {section.body.map((p) => (
-                <p key={p}>{p}</p>
+              {section.body.map((p, i) => (
+                <p key={i}>{p}</p>
               ))}
             </div>
           </section>

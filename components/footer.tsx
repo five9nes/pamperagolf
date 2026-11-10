@@ -45,11 +45,14 @@ export function Footer() {
           <p className="label mb-2 text-dim">Orders</p>
           <p>{site.leadTime}.</p>
           <p>Free shipping within the United States.</p>
+          <a href={`mailto:${site.email}`} className="mt-4 w-fit hover:text-coral">
+            {site.email}
+          </a>
           <a
             href={site.instagram.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 flex w-fit items-center gap-2 hover:text-coral"
+            className="flex w-fit items-center gap-2 hover:text-coral"
           >
             <InstagramGlyph className="size-4" />@{site.instagram.handle}
           </a>

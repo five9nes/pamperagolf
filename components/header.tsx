@@ -147,6 +147,9 @@ export function Header() {
             </Link>
           ))}
           <p className="label mt-8">{site.leadTime}</p>
+          <a href={`mailto:${site.email}`} className="label mt-2 block w-fit">
+            {site.email}
+          </a>
         </nav>
       </dialog>
     </header>

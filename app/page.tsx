@@ -253,31 +253,35 @@ export default async function Home() {
         </section>
       </div>
 
-      {/* On the course: pinned and scrolled sideways on desktop, swiped on mobile. */}
-      <section data-horizontal aria-labelledby="course-title" className="overflow-hidden py-20 md:h-svh md:py-0">
-        <div
-          data-track
-          className="container-page flex h-full snap-x snap-mandatory items-center gap-3 overflow-x-auto [scrollbar-width:none] md:w-max md:gap-5 md:overflow-visible"
-        >
-          <div className="w-[70vw] shrink-0 snap-start pr-6 md:w-[30vw] md:pr-10">
-            <h2 id="course-title" data-reveal="lines" className="display text-[3rem] md:text-[5.5rem]">
-              On the <span className="accent">course.</span>
-            </h2>
-            <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-muted">
-              The founding collection, out where it belongs.
-            </p>
+      {/* On the course: pinned and scrolled sideways on desktop, swiped on mobile.
+          The wrapper gives GSAP's pin-spacer a parent React doesn't remove directly, so
+          client-side navigation away from this page doesn't trip over the moved node. */}
+      <div>
+        <section data-horizontal aria-labelledby="course-title" className="overflow-hidden py-20 md:h-svh md:py-0">
+          <div
+            data-track
+            className="container-page flex h-full snap-x snap-mandatory items-center gap-3 overflow-x-auto [scrollbar-width:none] md:w-max md:gap-5 md:overflow-visible"
+          >
+            <div className="w-[70vw] shrink-0 snap-start pr-6 md:w-[30vw] md:pr-10">
+              <h2 id="course-title" data-reveal="lines" className="display text-[3rem] md:text-[5.5rem]">
+                On the <span className="accent">course.</span>
+              </h2>
+              <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-muted">
+                The founding collection, out where it belongs.
+              </p>
+            </div>
+            {course.map(({ src, alt, wide }) => (
+              <Frame
+                key={alt}
+                src={src}
+                alt={alt}
+                sizes={wide ? "(min-width: 768px) 60vw, 85vw" : "(min-width: 768px) 28vw, 62vw"}
+                className={`h-[58svh] shrink-0 snap-start md:h-[68vh] ${wide ? "aspect-[3/2] max-w-[85vw]" : "aspect-[3/4]"}`}
+              />
+            ))}
           </div>
-          {course.map(({ src, alt, wide }) => (
-            <Frame
-              key={alt}
-              src={src}
-              alt={alt}
-              sizes={wide ? "(min-width: 768px) 60vw, 85vw" : "(min-width: 768px) 28vw, 62vw"}
-              className={`h-[58svh] shrink-0 snap-start md:h-[68vh] ${wide ? "aspect-[3/2] max-w-[85vw]" : "aspect-[3/4]"}`}
-            />
-          ))}
-        </div>
-      </section>
+        </section>
+      </div>
 
       <InstagramStrip />
 

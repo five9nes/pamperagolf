@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddToCart } from "@/components/product/add-to-cart";
 import { Gallery } from "@/components/product/gallery";
+import { ProductGrid } from "@/components/product/product-grid";
 import { commerce } from "@/lib/commerce";
 import { materials, site } from "@/lib/site";
 
@@ -26,6 +27,11 @@ export async function generateMetadata({ params }: PageProps<"/products/[handle]
 export default async function ProductPage({ params }: PageProps<"/products/[handle]">) {
   const product = await commerce.getProduct((await params).handle);
   if (!product) notFound();
+
+  // The next designs in collection order, wrapping round, so each page suggests different covers.
+  const collection = await commerce.getCollectionProducts();
+  const at = collection.findIndex((p) => p.handle === product.handle);
+  const related = [...collection.slice(at + 1), ...collection.slice(0, Math.max(at, 0))].slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -59,7 +65,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[hand
         <div className="grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_26rem]">
           <Gallery images={product.images} title={product.title} />
 
-          <div className="container-page pt-6 lg:sticky lg:top-20 lg:self-start lg:px-0 lg:pt-12 lg:pr-6">
+          <div className="container-page pt-6 lg:sticky lg:top-28 lg:self-start lg:px-0 lg:pt-12 lg:pr-6">
             <nav aria-label="Breadcrumb" className="label mb-5 text-[11px] text-muted">
               <Link href="/shop" className="hover:text-ink">
                 {site.collection.title}
@@ -98,6 +104,24 @@ export default async function ProductPage({ params }: PageProps<"/products/[hand
           </div>
         </div>
       </div>
+
+      {related.length > 0 && (
+        <section className="container-page mt-20 pb-24 md:mt-32 md:pb-32" aria-labelledby="related-title">
+          <div className="flex items-end justify-between gap-4 border-b border-line pb-6">
+            <div>
+              <p className="label text-muted">{site.collection.title}</p>
+              <h2 id="related-title" data-reveal="lines" className="display mt-3 text-[2.5rem] md:text-[4rem]">
+                Related <span className="accent">products.</span>
+              </h2>
+            </div>
+            <Link href="/shop" className="link-arrow shrink-0 pb-2">
+              Shop all
+            </Link>
+          </div>
+          {/* Two across on mobile, so the third would sit alone. */}
+          <ProductGrid products={related} preload={0} className="max-sm:[&>li:nth-child(3)]:hidden" />
+        </section>
+      )}
     </>
   );
 }
