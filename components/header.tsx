@@ -11,7 +11,6 @@ import { Mark, Wordmark } from "./logo";
 const explore = [
   { href: "/story", label: "Our Story" },
   { href: "/story#the-cloth", label: "The Cloth" },
-  { href: "/story#the-process", label: "The Process" },
 ];
 
 const menu = [{ href: "/shop", label: `Shop ${site.collection.title}` }, ...explore, { href: "/shipping", label: "Shipping" }];

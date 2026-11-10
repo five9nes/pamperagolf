@@ -18,7 +18,6 @@ const columns = [
     links: [
       { href: "/story", label: "Our Story" },
       { href: "/story#the-cloth", label: "The Cloth" },
-      { href: "/story#the-process", label: "The Process" },
     ],
   },
 ];

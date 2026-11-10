@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { clothSpec, processSteps, site } from "@/lib/site";
+import { clothSpec, site } from "@/lib/site";
 import mate from "@/public/images/lifestyle/mate.jpg";
 import tagDetail from "@/public/images/lifestyle/tag-detail.jpg";
 import wallPair from "@/public/images/lifestyle/wall-pair.jpg";
@@ -10,7 +10,7 @@ import lakeside from "@/public/images/lifestyle/campaign-9.jpg";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "How a golfer in New York and weavers in Argentina ended up making headcovers — the origin, the cloth and the process.",
+    "How a golfer in New York and weavers in Argentina ended up making headcovers — the origin and the cloth.",
   alternates: { canonical: "/story" },
 };
 
@@ -96,23 +96,6 @@ export default function StoryPage() {
                 </div>
               ))}
             </dl>
-          </Section>
-
-          <Section id="the-process" eyebrow="The Process" title="Five pairs of hands before ours.">
-            <p>
-              The cloth in every cover has passed through five pairs of hands before we touch it — shorn, washed, spun,
-              dyed, and woven in Argentina on wooden looms, at the pace that work takes. What we add is the last two
-              steps.
-            </p>
-            <ol className="grid gap-x-8 gap-y-6 border-t border-line pt-6 sm:grid-cols-2">
-              {processSteps.map(([title, body], i) => (
-                <li key={title}>
-                  <p className="label text-[11px] text-coral-ink tabular-nums">{String(i + 1).padStart(2, "0")}</p>
-                  <h3 className="title mt-1.5 text-sm">{title}</h3>
-                  <p className="mt-1.5 text-[14px] leading-relaxed text-muted">{body}</p>
-                </li>
-              ))}
-            </ol>
           </Section>
         </div>
 
