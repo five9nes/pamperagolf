@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useState, useTransition } from "react";
 import { useCart } from "@/components/cart/cart-context";
 import type { Variant } from "@/lib/commerce/types";
@@ -26,12 +27,13 @@ export function QuickAdd({ title, variants }: { title: string; variants: Variant
                 key={variant.id}
                 type="button"
                 disabled={disabled}
-                onClick={() =>
+                onClick={() => {
+                  track("Pre-order", { product: title, size: sizeOf(variant), from: "grid" });
                   startTransition(async () => {
                     await add(variant.id);
                     setOpen(false);
-                  })
-                }
+                  });
+                }}
                 className={`label h-9 flex-1 rounded-full bg-paper/95 backdrop-blur-sm transition-colors hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:text-muted disabled:hover:bg-paper/95 ${
                   variant.availableForSale ? "" : "line-through"
                 }`}

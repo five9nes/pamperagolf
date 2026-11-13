@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useEffect, useId, useRef, useState, useTransition } from "react";
 import { useCart } from "@/components/cart/cart-context";
 import type { Variant } from "@/lib/commerce/types";
@@ -65,7 +66,10 @@ export function AddToCart({ title, variants }: { title: string; variants: Varian
       : isPending
         ? "Reserving…"
         : "Pre-order";
-  const onAdd = () => startTransition(async () => void (await add(selected.id)));
+  const onAdd = () => {
+    track("Pre-order", { product: title, size, from: "product page" });
+    startTransition(async () => void (await add(selected.id)));
+  };
 
   return (
     <div>

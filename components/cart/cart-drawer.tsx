@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -126,6 +127,7 @@ export function CartDrawer() {
           {cart.checkoutUrl ? (
             <a
               href={cart.checkoutUrl}
+              onClick={() => track("Checkout", { items: cart.totalQuantity, subtotal: cart.subtotal.amount })}
               className="btn mt-4 w-full"
             >
               Checkout
