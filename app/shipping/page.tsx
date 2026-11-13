@@ -48,7 +48,7 @@ const sections: { title: string; body: React.ReactNode[] }[] = [
         your original payment method once the cover reaches us.
       </>,
       <>
-        If your cover arrives damaged or faulty, email {email} within 30 days of delivery and we&rsquo;ll make it right.
+        If your cover arrives damaged or faulty, email {email} within 14 days of delivery and we&rsquo;ll make it right.
       </>,
     ],
   },
