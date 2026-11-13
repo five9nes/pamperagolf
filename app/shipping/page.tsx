@@ -8,9 +8,7 @@ export const metadata: Metadata = {
 };
 
 /*
- * TODO(owner): the bracketed items below are placeholders — confirm the returns
- * policy before launch. Keep this page in sync with the
- * policies set in Shopify Admin → Settings → Policies (checkout links to those).
+ * Keep this page in sync with the policies set in Shopify Admin → Settings → Policies (checkout links to those).
  */
 const email = (
   <a href={`mailto:${site.email}`} className="underline underline-offset-4">
@@ -44,10 +42,13 @@ const sections: { title: string; body: React.ReactNode[] }[] = [
   {
     title: "Returns",
     body: [
-      "[Returns policy to be confirmed — e.g. whether made-to-order covers are final sale, or returnable within a set window in unused condition.]",
+      "You can return a cover within 30 days of delivery for a full refund, as long as it's unused and in its original condition.",
       <>
-        If your cover arrives damaged or faulty, email {email} and we&rsquo;ll make it right. [Claim window — to be
-        confirmed.]
+        To start a return, email {email} with your order number and we&rsquo;ll send instructions. Refunds go back to
+        your original payment method once the cover reaches us.
+      </>,
+      <>
+        If your cover arrives damaged or faulty, email {email} within 30 days of delivery and we&rsquo;ll make it right.
       </>,
     ],
   },
