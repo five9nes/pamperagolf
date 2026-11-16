@@ -123,6 +123,12 @@ export function CartDrawer() {
             <span>Subtotal</span>
             <span>{formatMoney(cart.subtotal)}</span>
           </div>
+          {cart.discountCodes.map((d) => (
+            <p key={d.code} className="mt-2 flex justify-between gap-4 text-[12px]">
+              <span className="label">Code {d.code}</span>
+              <span className="text-muted">Comes off at checkout</span>
+            </p>
+          ))}
           <p className="mt-1 text-[12px] text-muted">{site.shipping}. Tax calculated at checkout. {site.leadTime}.</p>
           {cart.checkoutUrl ? (
             <a

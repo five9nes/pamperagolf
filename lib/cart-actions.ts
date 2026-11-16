@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import { commerce, type Cart } from "./commerce";
 
 const CART_COOKIE = "pampera_cart";
+/** A code picked up from a link (e.g. /set) before there's a cart to put it on. */
+const DISCOUNT_COOKIE = "pampera_discount";
 
 export type CartResult = { cart: Cart | null; error?: string };
 
@@ -47,8 +49,28 @@ export async function addToCart(merchandiseId: string, quantity = 1): Promise<Ca
     if (cartId && (await commerce.getCart(cartId).catch(() => undefined))) {
       return commerce.addToCart(cartId, lines);
     }
-    return commerce.createCart(lines);
+    const code = (await cookies()).get(DISCOUNT_COOKIE)?.value;
+    return commerce.createCart(lines, code ? [code] : []);
   });
+}
+
+/** Adds a discount code to the bag now, or to the bag when it's created. */
+export async function applyDiscount(code: string): Promise<CartResult> {
+  const normalized = code.trim().toUpperCase();
+  if (!/^[A-Z0-9_-]{3,40}$/.test(normalized)) return { cart: await readCart() };
+  const jar = await cookies();
+  jar.set(DISCOUNT_COOKIE, normalized, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30,
+  });
+  const cart = await readCart();
+  if (!cart || cart.discountCodes.some((d) => d.code.toUpperCase() === normalized)) return { cart };
+  return run(async (cartId) =>
+    commerce.setDiscountCodes(cartId!, [...cart.discountCodes.map((d) => d.code), normalized]),
+  );
 }
 
 export async function updateCartLine(lineId: string, quantity: number): Promise<CartResult> {

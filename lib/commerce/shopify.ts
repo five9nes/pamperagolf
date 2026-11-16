@@ -40,6 +40,7 @@ const cartFragment = /* GraphQL */ `
     id
     checkoutUrl
     totalQuantity
+    discountCodes { code applicable }
     cost { subtotalAmount { ${moneyFields} } }
     lines(first: 50) {
       nodes {
@@ -99,6 +100,7 @@ function reshapeCart(c: ShopifyCart): Cart {
     totalQuantity: c.totalQuantity,
     subtotal: c.cost.subtotalAmount,
     lines: c.lines.nodes,
+    discountCodes: c.discountCodes,
   };
 }
 
@@ -136,7 +138,7 @@ export function createShopifyProvider(opts: {
   }
 
   async function cartMutation(
-    name: "cartCreate" | "cartLinesAdd" | "cartLinesUpdate" | "cartLinesRemove",
+    name: "cartCreate" | "cartLinesAdd" | "cartLinesUpdate" | "cartLinesRemove" | "cartDiscountCodesUpdate",
     signature: string,
     args: string,
     variables: Record<string, unknown>,
@@ -200,8 +202,21 @@ export function createShopifyProvider(opts: {
       return data.cart ? reshapeCart(data.cart) : undefined;
     },
 
-    createCart: (lines) =>
-      cartMutation("cartCreate", "$lines: [CartLineInput!]", "input: { lines: $lines }", { lines }),
+    createCart: (lines, discountCodes = []) =>
+      cartMutation(
+        "cartCreate",
+        "$lines: [CartLineInput!], $discountCodes: [String!]",
+        "input: { lines: $lines, discountCodes: $discountCodes }",
+        { lines, discountCodes },
+      ),
+
+    setDiscountCodes: (cartId, discountCodes) =>
+      cartMutation(
+        "cartDiscountCodesUpdate",
+        "$cartId: ID!, $discountCodes: [String!]",
+        "cartId: $cartId, discountCodes: $discountCodes",
+        { cartId, discountCodes },
+      ),
 
     addToCart: (cartId, lines) =>
       cartMutation(

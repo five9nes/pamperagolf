@@ -59,6 +59,8 @@ export type Cart = {
   totalQuantity: number;
   subtotal: Money;
   lines: CartLine[];
+  /** Codes on the cart. `applicable` can stay false until checkout, e.g. for codes limited to returning customers. */
+  discountCodes: { code: string; applicable: boolean }[];
 };
 
 export interface CommerceProvider {
@@ -66,8 +68,10 @@ export interface CommerceProvider {
   getCollectionProducts(): Promise<Product[]>;
   getProduct(handle: string): Promise<Product | undefined>;
   getCart(cartId: string): Promise<Cart | undefined>;
-  createCart(lines: { merchandiseId: string; quantity: number }[]): Promise<Cart>;
+  createCart(lines: { merchandiseId: string; quantity: number }[], discountCodes?: string[]): Promise<Cart>;
   addToCart(cartId: string, lines: { merchandiseId: string; quantity: number }[]): Promise<Cart>;
   updateCart(cartId: string, lines: { id: string; quantity: number }[]): Promise<Cart>;
   removeFromCart(cartId: string, lineIds: string[]): Promise<Cart>;
+  /** Replaces the cart's discount codes; they carry through to Shopify checkout. */
+  setDiscountCodes(cartId: string, codes: string[]): Promise<Cart>;
 }

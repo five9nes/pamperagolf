@@ -84,3 +84,13 @@ export function editionProgress(variants: { quantityAvailable: number | null }[]
   const left = variants.reduce((n, v) => n + Math.max(v.quantityAvailable ?? 0, 0), 0);
   return { total, reserved: Math.min(Math.max(total - left, 0), total) };
 }
+
+/*
+ * Thank-you card offer, printed in every shipping box. The code itself lives in Shopify
+ * (Discounts): 15% off, returning customers only, one use per customer. Keep these in sync.
+ */
+export const completeTheSet = {
+  code: "COMPLETETHESET",
+  percent: 15,
+  path: "/set",
+} as const;

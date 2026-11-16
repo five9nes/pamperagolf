@@ -47,6 +47,7 @@ function toCart(stored: StoredLine[]): Cart {
     totalQuantity: lines.reduce((sum, l) => sum + l.quantity, 0),
     subtotal: { amount: subtotal.toFixed(2), currencyCode: "USD" },
     lines,
+    discountCodes: [],
   };
 }
 
@@ -76,4 +77,6 @@ export const previewProvider: CommerceProvider = {
     ),
   removeFromCart: async (cartId, lineIds) =>
     toCart(decode(cartId).filter((l) => !lineIds.includes(l.merchandiseId))),
+  // Preview checkout doesn't exist, so codes have nowhere to go.
+  setDiscountCodes: async (cartId) => toCart(decode(cartId)),
 };

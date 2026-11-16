@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, useTransition } from "react";
-import { addToCart, updateCartLine, type CartResult } from "@/lib/cart-actions";
+import { addToCart, applyDiscount, updateCartLine, type CartResult } from "@/lib/cart-actions";
 import type { Cart } from "@/lib/commerce/types";
 
 type CartContextValue = {
@@ -13,6 +13,7 @@ type CartContextValue = {
   close: () => void;
   add: (variantId: string) => Promise<boolean>;
   update: (lineId: string, quantity: number) => void;
+  discount: (code: string) => Promise<void>;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -59,6 +60,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     [apply],
   );
 
+  const discount = useCallback(
+    async (code: string) => {
+      apply(await applyDiscount(code));
+    },
+    [apply],
+  );
+
   const value = useMemo(
     () => ({
       cart,
@@ -69,8 +77,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       close: () => setIsOpen(false),
       add,
       update,
+      discount,
     }),
-    [cart, isOpen, isPending, error, add, update],
+    [cart, isOpen, isPending, error, add, update, discount],
   );
 
   return <CartContext value={value}>{children}</CartContext>;
